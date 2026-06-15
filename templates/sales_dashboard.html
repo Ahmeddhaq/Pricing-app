@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="panel-card" style="margin-bottom: 2rem;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Search</p>
+      <h2>Product Lookup</h2>
+    </div>
+  </div>
+  <form method="GET" action="{% url 'dashboard' %}" class="form-grid search-form" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
+    <input list="master_products_list" name="q" value="{{ query }}" placeholder="Type to search and select a product..." style="flex: 1; margin-top: 0; height: 50px; padding: 0 1rem; border-radius: 8px; border: 1px solid var(--line); font-family: inherit; font-size: 1rem; background-color: var(--card-bg); color: var(--text);" autocomplete="off">
+    <datalist id="master_products_list">
+      {% for mp in master_products %}
+        <option value="{{ mp.code }}">{{ mp.code }} - {{ mp.description }}</option>
+      {% endfor %}
+    </datalist>
+    <button type="submit" class="primary-button" style="margin-top: 0; height: 50px;">Search</button>
+  </form>
+
+  {% if query %}
+  <div class="stack-list">
+    {% for product in search_results %}
+    <div class="list-row" style="align-items: flex-start;">
+      <div>
+        <strong>{{ product.sku }} - {{ product.name }}</strong>
+        <p style="margin: 0.5rem 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4;">
+          {% if product.master %}
+          <strong>Code:</strong> {{ product.master.code }}<br>
+          <strong>Specification:</strong> {{ product.master.specification }}<br>
+          <strong>Approval:</strong> {{ product.master.approval }}<br>
+          <strong>Packaging:</strong> {{ product.master.packaging }}<br>
+          {% endif %}
+          <strong>Production Cost:</strong> ${{ product.production_price }}<br>
+          <strong>Selling Price:</strong> <strong style="color: var(--text-main);">${{ product.selling_price }}</strong><br>
+          <strong>Last Updated:</strong> {{ product.updated_at|date:"M d, Y H:i" }}
+        </p>
+      </div>
+    </div>
+    {% empty %}
+    <div class="empty-state">No products found for "{{ query }}".</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+<section class="panel-card">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Updates</p>
+      <h2>Recent Pricing Changes</h2>
+    </div>
+  </div>
+  <div class="stack-list">
+    {% for update in recent_updates %}
+    <div class="list-row">
+      <div>
+        <strong>{{ update.product.sku }}</strong>
+        <span style="display: block; color: var(--text-secondary); font-size: 0.9rem;">{{ update.field_name|title }} updated</span>
+        <span style="display: block; font-size: 0.8rem; color: var(--text-secondary);">{{ update.created_at|date:"M d, Y H:i" }}</span>
+      </div>
+      <div class="list-meta">
+        <span style="text-decoration: line-through; color: var(--text-secondary); margin-right: 0.5rem;">{{ update.old_value }}</span> → <strong style="margin-left: 0.5rem;">{{ update.new_value }}</strong>
+      </div>
+    </div>
+    {% empty %}
+    <div class="empty-state">No recent updates.</div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

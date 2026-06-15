@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel-card">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Audit trail</p>
+      <h2>All changes</h2>
+    </div>
+  </div>
+
+  <form method="get" class="form-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: end;">
+    <p>
+      <label for="id_q">Search</label>
+      <input id="id_q" type="text" name="q" value="{{ query }}" placeholder="SKU, product name, user, field">
+    </p>
+    <p>
+      <label for="id_date">Date</label>
+      <input id="id_date" type="date" name="date" value="{{ date_value }}">
+    </p>
+    <div class="form-actions">
+      <button class="primary-button" type="submit">Search</button>
+      <a class="ghost-button" href="/history/" style="margin-left: 8px;">Reset</a>
+    </div>
+  </form>
+
+  <div class="section-head" style="margin-top: 16px;">
+    <div>
+      <p class="eyebrow">Results</p>
+      <h2>{{ total_count }} change{{ total_count|pluralize }}</h2>
+    </div>
+  </div>
+
+  <div class="stack-list">
+    {% for item in changes %}
+    <div class="list-row">
+      <div>
+        <strong>{{ item.product.sku }} · {{ item.product.name }}</strong>
+        <span>{{ item.field_name }} · {{ item.created_at }}{% if item.changed_by %} · by {{ item.changed_by.username }}{% endif %}</span>
+      </div>
+      <div class="list-meta">{{ item.old_value }} → {{ item.new_value }}</div>
+    </div>
+    {% empty %}
+    <div class="empty-state">No changes match your search.</div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

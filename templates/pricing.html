@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel-card">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Pricing Configuration</p>
+      <h2>Pricing</h2>
+    </div>
+  </div>
+
+  {% if errors %}
+  <div class="errors" style="margin-bottom: 20px;">
+    <ul>
+      {% for error in errors %}
+      <li style="color: red;">{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <form method="post" class="form-grid" style="margin-bottom: 30px;">
+    {% csrf_token %}
+    <input type="hidden" name="pricing_id" value="{{ form.pricing_id|default:'' }}">
+    
+    <div style="display: flex; flex-direction: column;">
+      <label for="product">Product</label>
+      <select id="product" name="product" required>
+        <option value="">Select a Product</option>
+        {% for mp in master_products %}
+        <option value="{{ mp.id }}" data-code="{{ mp.code }}" data-packaging="{{ mp.packaging }}" {% if form.product_id == mp.id %}selected{% endif %}>{{ mp.code }} - {{ mp.description }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+      <label>Pack</label>
+      <input type="text" id="pack_display" value="" readonly style="background-color: #f5f5f5;">
+      <input type="hidden" id="pack_multiplier" name="pack_multiplier" value="0">
+      <small style="color: #666;">(Automated)</small>
+    </div>
+    
+    <div style="display: flex; flex-direction: column;">
+      <label for="production_cost_per_liter">Production Cost Per Liter</label>
+      <input type="number" id="production_cost_per_liter" name="production_cost_per_liter" value="{{ form.production_cost_per_liter}}" required>
+    </div>
+    
+    <div style="display: flex; flex-direction: column;">
+      <label for="packaging">Packaging</label>
+      <input type="text" id="packaging" name="packaging" value="{{ form.packaging|default:'' }}" required>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+      <label>Total</label>
+      <input type="text" id="final_cost" readonly style="background-color: #f5f5f5;">
+      <small style="color: #666;">(Automated)</small>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+      <label>Selling Price</label>
+      <input type="text" id="selling_price" value="0.00" readonly style="background-color: #f5f5f5;">
+      <small style="color: #666;">(Automated)</small>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+      <label for="quantity">Quantity</label>
+      <input type="number" id="quantity" name="quantity" value="{{ form.quantity}}" required>
+    </div>
+    
+    <div style="display: flex; flex-direction: column;">
+      <label>Price</label>
+      <input type="text" id="price" value="0.00" readonly style="background-color: #f5f5f5;">
+      <small style="color: #666;">(Automated)</small>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+      <label for="discount">Discount</label>
+      <input type="number" step="0.01" id="discount" name="discount" value="{{ form.discount|default:'0.00' }}" required>
+    </div>
+
+    <div class="form-actions" style="grid-column: 1 / -1; margin-top: 15px;">
+      {% if form.pricing_id %}
+        <button class="primary-button" type="submit" name="action" value="update">Update Pricing</button>
+        <a href="{% url 'pricing_list' %}" class="ghost-button" style="margin-left: 15px;">Cancel Edit</a>
+      {% else %}
+        <button class="primary-button" type="submit" name="action" value="add">Add Pricing</button>
+      {% endif %}
+    </div>
+  </form>
+
+  <hr style="margin: 30px 0; border: 0; border-top: 1px solid var(--line);">
+
+  {% if rows %}
+    <table class="data-table" style="width: 100%; text-align: left; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Production Cost / L</th>
+          <th>Packaging</th>
+          <th>Quantity</th>
+          <th>Discount</th>
+          <th>Total</th>
+          <th>Selling Price</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <td style="padding: 12px 14px;">{{ row.product.code }}</td>
+          <td style="padding: 12px 14px;">
+            {{ row.production_cost_per_liter }}
+            <br>
+            <small style="color: #888; font-size: 0.75rem;">Updated: {{ row.production_cost_date|date:"Y-m-d" }}</small>
+          </td>
+          <td style="padding: 12px 14px;">{{ row.product.packaging }}</td>
+          <td style="padding: 12px 14px;">{{ row.quantity }}</td>
+          <td style="padding: 12px 14px;">$ {{ row.discount }}</td>
+          <td style="padding: 12px 14px;">$ {{ row.final_cost }}</td>
+          <td style="padding: 12px 14px;">$ {{ row.selling_price }}</td>
+          <td style="padding: 12px 14px;">$ {{ row.price }}</td>
+          <td style="padding: 12px 14px;">
+            <form method="post" style="display: flex; gap: 8px; align-items: center; margin: 0;">
+              {% csrf_token %}
+              <input type="hidden" name="pricing_id" value="{{ row.id }}">
+              <button type="submit" name="action" value="edit" class="ghost-button" style="padding: 6px 14px; font-size: 0.85rem;">Edit</button>
+              <button type="submit" name="action" value="delete" class="ghost-button" style="padding: 6px 14px; font-size: 0.85rem; color: #d93f3f; border-color: rgba(217, 63, 63, 0.2); background: rgba(217, 63, 63, 0.05);" onclick="return confirm('Are you sure you want to delete this pricing entry?');">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="empty-state" style="padding: 40px; text-align: center; background: rgba(23, 46, 78, 0.03); border-radius: 12px; border: 1px dashed var(--line);">
+      No pricing data added yet. Use the form above to add pricing configurations.
+    </div>
+  {% endif %}
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const productSelect = document.getElementById('product');
+    const packDisplay = document.getElementById('pack_display');
+    const packMultiplierInput = document.getElementById('pack_multiplier');
+    const packagingInput = document.getElementById('packaging');
+    const finalCostInput = document.getElementById('final_cost');
+    
+    function updatePack() {
+      const selectedOption = productSelect.options[productSelect.selectedIndex];
+      if (selectedOption && selectedOption.value) {
+        const originalPackaging = (selectedOption.getAttribute('data-packaging') || '').trim();
+        const packaging = originalPackaging.toLowerCase().replace(/l$/i, '').trim();
+        let multiplier = 0;
+        let displayStr = originalPackaging;
+        
+        if (packaging === '12x1') {
+            multiplier = 12;
+            displayStr = originalPackaging + ' (12)';
+        } else if (packaging === '4x4') {
+            multiplier = 16;
+            displayStr = originalPackaging + ' (16)';
+        } else if (packaging === '4x5') {
+            multiplier = 20;
+            displayStr = originalPackaging + ' (20)';
+        } else {
+            const match = packaging.match(/^(\d+)\s*x\s*(\d+)$/);
+            if (match) {
+                multiplier = parseInt(match[1], 10) * parseInt(match[2], 10);
+                displayStr = `${originalPackaging} (${multiplier})`;
+            } else {
+                const matchSingle = packaging.match(/^\d+/);
+                if (matchSingle) {
+                    multiplier = parseInt(matchSingle[0], 10);
+                    displayStr = `${originalPackaging} (${multiplier})`;
+                }
+            }
+        }
+        
+        packDisplay.value = displayStr;
+        packMultiplierInput.value = multiplier;
+      } else {
+        packDisplay.value = '';
+        packMultiplierInput.value = 0;
+      }
+    }
+
+    function calculateFinalCost() {
+      const selectedOption = productSelect.options[productSelect.selectedIndex];
+      if (!selectedOption || !selectedOption.value) {
+        if(document.getElementById('final_cost')) document.getElementById('final_cost').value = '0.00';
+        if(document.getElementById('selling_price')) document.getElementById('selling_price').value = '0.00';
+        if(document.getElementById('price')) document.getElementById('price').value = '0.00';
+        return;
+      }
+      
+      let prodCost = parseFloat(document.getElementById('production_cost_per_liter').value) || 0;
+      let packVal = parseFloat(packMultiplierInput.value) || 0;
+      
+      // Attempt to extract the first number from the packaging input (e.g., "6.5" from "6.5x1" or "6.5")
+      let packagingVal = 0;
+      const packagingMatch = packagingInput.value.match(/[-+]?\d*\.?\d+/);
+      if (packagingMatch) {
+          packagingVal = parseFloat(packagingMatch[0]);
+      }
+      
+      let finalCost = (prodCost * packVal) + packagingVal;
+      let sellingPrice = finalCost + (finalCost * 0.20);
+      
+      let qty = parseFloat(document.getElementById('quantity').value) || 0;
+      let discount = parseFloat(document.getElementById('discount').value) || 0;
+      let price = (sellingPrice * qty) - discount;
+
+      if (document.getElementById('final_cost')) document.getElementById('final_cost').value = finalCost.toFixed(2);
+      if (document.getElementById('selling_price')) document.getElementById('selling_price').value = sellingPrice.toFixed(2);
+      if (document.getElementById('price')) document.getElementById('price').value = price.toFixed(2);
+    }
+    
+    productSelect.addEventListener('change', function() {
+        updatePack();
+        calculateFinalCost();
+    });
+    
+    packagingInput.addEventListener('input', calculateFinalCost);
+    document.getElementById('production_cost_per_liter').addEventListener('input', calculateFinalCost);
+    document.getElementById('quantity').addEventListener('input', calculateFinalCost);
+    document.getElementById('discount').addEventListener('input', calculateFinalCost);
+    
+    // Initialize on load
+    updatePack();
+    calculateFinalCost();
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,2 @@
+# Just create it manually with your dependencies
+echo "Django>=4.2" > requirements.txt

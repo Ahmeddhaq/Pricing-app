@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+  <div>
+    <h1 style="font-size: 2rem; margin: 0; color: var(--text);">Production Control Center</h1>
+    <p style="color: var(--muted); margin: 0.5rem 0 0 0;">Manage pricing, maintain specifications, and monitor cost updates.</p>
+  </div>
+  <div style="display: flex; gap: 1rem;">
+    <a href="{% url 'products_list' %}" class="ghost-button">Manage Master Database</a>
+  </div>
+</div>
+
+<section class="panel-card" style="margin-bottom: 2rem;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Cost Management</p>
+      <h2>Find & Update Products</h2>
+    </div>
+  </div>
+  
+  <form method="GET" action="{% url 'dashboard' %}" class="form-grid search-form" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
+    <select name="q" style="flex: 1; margin-top: 0; height: 50px; padding: 0 1rem; border-radius: 8px; border: 1px solid var(--line); font-family: inherit; font-size: 1rem; background-color: var(--card-bg); color: var(--text);">
+      <option value="">Select a product to update cost...</option>
+      {% for mp in master_products %}
+        <option value="{{ mp.code }}" {% if query == mp.code %}selected{% endif %}>{{ mp.code }} - {{ mp.description }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="primary-button" style="margin-top: 0; height: 50px;">Search</button>
+  </form>
+
+  {% if query %}
+  <div class="stack-list">
+    {% for product in search_results %}
+    <div class="list-row" style="align-items: flex-start; padding: 1.5rem; background: rgba(240, 162, 58, 0.03); border-color: rgba(240, 162, 58, 0.2);">
+      <div style="flex: 1;">
+        <strong style="font-size: 1.1rem; color: var(--text);">{{ product.sku }} - {{ product.name }}</strong>
+        <p style="margin: 0.5rem 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
+          {% if product.master %}
+          <strong>Master Code:</strong> {{ product.master.code }} · 
+          <strong>Packaging:</strong> {{ product.master.packaging }}<br>
+          {% endif %}
+          <strong>Last Updated:</strong> {{ product.updated_at|date:"M d, Y H:i" }} 
+          {% if product.updated_by %}by <strong>{{ product.updated_by.username }}</strong>{% endif %}
+        </p>
+      </div>
+      
+      <div style="flex: 1.2; background: rgba(255, 255, 255, 0.5); padding: 1rem; border-radius: 12px; border: 1px solid var(--line);">
+        <form method="POST" action="{% url 'dashboard' %}" class="form-grid" style="display: flex; gap: 1rem; align-items: flex-end;">
+          {% csrf_token %}
+          <input type="hidden" name="update_cost" value="1">
+          <input type="hidden" name="product_id" value="{{ product.id }}">
+          
+          <div style="flex: 1;">
+            <label style="display: block; font-weight: 500; font-size: 0.85rem; margin-bottom: 4px;">Production Cost ($)</label>
+            <input type="number" step="0.01" name="production_price" value="{{ product.production_price }}" required style="margin: 0; padding: 10px; font-weight: bold; color: var(--accent-strong);">
+          </div>
+          
+          <div style="flex: 1;">
+            <label style="display: block; font-weight: 500; font-size: 0.85rem; margin-bottom: 4px;">Profit Margin (%)</label>
+            <input type="number" step="0.01" name="profit_percent" value="{{ product.profit_percent }}" required style="margin: 0; padding: 10px;">
+          </div>
+          
+          <div>
+            <button type="submit" class="ghost-button" style="padding: 10px 16px; margin: 0; height: 44px; color: var(--accent-strong); border-color: rgba(240, 162, 58, 0.4); background: rgba(240, 162, 58, 0.08);">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    {% empty %}
+    <div class="empty-state" style="text-align: center; padding: 2rem;">No products found for "{{ query }}". Try searching in the Master Database.</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+<div class="grid-two">
+  <section class="panel-card">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow" style="color: #dc3545;">Alerts</p>
+        <h2>Requires Attention</h2>
+      </div>
+    </div>
+    <div class="stack-list">
+      {% for product in attention_products %}
+      <div class="list-row" style="border-left: 3px solid #dc3545;">
+        <div>
+          <strong>{{ product.sku }} - {{ product.name }}</strong>
+          <span style="display: block; color: var(--text-secondary); font-size: 0.85rem;">Missing cost/price data</span>
+        </div>
+        <div class="list-meta">
+          <form method="GET" action="{% url 'dashboard' %}" style="margin: 0;">
+            <input type="hidden" name="q" value="{{ product.sku }}">
+            <button type="submit" class="ghost-button" style="padding: 6px 14px; font-size: 0.85rem;">Fix Now</button>
+          </form>
+        </div>
+      </div>
+      {% empty %}
+      <div class="empty-state" style="text-align: center; padding: 2rem;">All products are fully priced! 🎉</div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="panel-card">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Audit Trail</p>
+        <h2>System Activity Log</h2>
+      </div>
+      <a class="ghost-button" href="{% url 'history_view' %}">Full History</a>
+    </div>
+    <div class="stack-list">
+      {% for item in history %}
+      <div class="list-row">
+        <div>
+          <strong>{{ item.product.sku }}</strong>
+          <span style="display: block; color: var(--text-secondary); font-size: 0.85rem;">
+            {{ item.field_name|title }} updated by {% if item.changed_by %}<strong>{{ item.changed_by.username }}</strong>{% else %}System{% endif %}
+          </span>
+          <span style="display: block; font-size: 0.8rem; color: var(--muted); margin-top: 2px;">{{ item.created_at|date:"M d, Y H:i" }}</span>
+        </div>
+        <div class="list-meta" style="text-align: right; background: rgba(23, 46, 78, 0.03); padding: 8px 12px; border-radius: 8px;">
+          <span style="text-decoration: line-through; color: var(--muted); font-size: 0.85rem; display: block;">{{ item.old_value }}</span>
+          <strong style="color: var(--accent-strong); display: block;">{{ item.new_value }}</strong>
+        </div>
+      </div>
+      {% empty %}
+      <div class="empty-state" style="text-align: center; padding: 2rem;">No recent system changes.</div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+{% endblock %}

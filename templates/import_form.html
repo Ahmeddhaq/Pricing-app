@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel-card">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Bulk import</p>
+      <h2>Upload spreadsheet</h2>
+    </div>
+  </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-actions">
+      <button class="primary-button" type="submit">Preview upload</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

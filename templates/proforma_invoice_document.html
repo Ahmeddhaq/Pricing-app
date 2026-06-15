@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proforma Invoice</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; margin: 0; padding: 20px; font-size: 14px; background: #f5f5f5; }
+        .document-container { width: 210mm; min-height: 297mm; margin: 0 auto; padding: 20mm; border: 1px solid #ddd; background: #fff; box-sizing: border-box; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; border-bottom: 2px solid #172e4e; padding-bottom: 20px; }
+        .company-info h1 { margin: 0 0 5px 0; color: #172e4e; font-size: 20px; }
+        .company-info p { margin: 0; color: #555; }
+        .document-title { text-align: right; }
+        .document-title h2 { margin: 0; font-size: 24px; color: #172e4e; text-transform: uppercase; }
+        .document-title p { margin: 5px 0 0 0; font-weight: bold; }
+        .info-section { display: flex; justify-content: space-between; margin-bottom: 30px; }
+        .info-block { width: 45%; }
+        .info-block h3 { margin: 0 0 10px 0; font-size: 14px; text-transform: uppercase; color: #888; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .info-block p { margin: 0 0 5px 0; }
+        .items-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+        .items-table th { background-color: #172e4e; color: #fff; padding: 12px; text-align: left; font-weight: bold; border-bottom: 2px solid #172e4e; }
+        .items-table td { padding: 12px; border-bottom: 1px solid #eee; }
+        .items-table .text-right { text-align: right; }
+        .totals-section { display: flex; justify-content: flex-end; margin-bottom: 40px; }
+        .totals-table { width: 40%; border-collapse: collapse; }
+        .totals-table td { padding: 8px 12px; border-bottom: 1px solid #eee; }
+        .totals-table tr:last-child td { border-bottom: none; font-weight: bold; font-size: 16px; border-top: 2px solid #172e4e; color: #172e4e; }
+        .footer { text-align: center; color: #888; font-size: 12px; border-top: 1px solid #eee; padding-top: 20px; margin-top: 40px; }
+        [contenteditable="true"] { padding: 2px; min-width: 20px; border-radius: 3px; }
+        span[contenteditable="true"], strong[contenteditable="true"] { display: inline-block; }
+        [contenteditable="true"]:hover { background: #fafafa; outline: 1px dashed #ccc; cursor: text; }
+        [contenteditable="true"]:focus { background: #fff; outline: 1px solid #172e4e; }
+        @media print {
+            body { background: none; padding: 0; }
+            .document-container { border: none; padding: 20mm; margin: 0; width: 210mm; min-height: 297mm; box-shadow: none; }
+            .no-print { display: none; }
+            .items-table th { background-color: #172e4e !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .header { border-bottom: 2px solid #172e4e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            [contenteditable="true"] { outline: none !important; background: transparent !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="no-print" style="text-align: right; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <button onclick="window.print()" style="padding: 10px 20px; background: #172e4e; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Print / Save PDF</button>
+    </div>
+    <div class="document-container">
+        <div class="header">
+            <div class="company-info">
+                <h1>Lubricant Pricing Studio</h1>
+                <h3>Supplier:</h3>
+                <h3 contenteditable="true">VANOL FZE</h3>
+                <p contenteditable="true">Plot S40805</p>
+                <p contenteditable="true">Jebel Ali Free Zone South</p>
+                <p contenteditable="true">Dubai, United Arab Emirates</p>
+                <p contenteditable="true">Phone No: +971 4 123 4567</p>
+                <p contenteditable="true">contact@vanol.com</p>
+            </div>
+            <div class="document-title">
+                <h2>Proforma Invoice</h2>
+                <p>Date: <span contenteditable="true">{{ date|default:"" }}</span></p>
+                <p>PI #: <span contenteditable="true">{{ quote.id|default:lead.pk|default:"" }}</span></p>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-block">
+                <h3>Invoice To:</h3>
+                <p>Company Name: <span contenteditable="true" style="font-weight: bold;">Taj Al Lulu General Trading Company</span></p>
+                <p>Address: <span contenteditable="true">Baghdad, Republic of Iraq</span></p>
+                <p>Contact Number: <span contenteditable="true"></span></p>
+                <p>Contact Name: <span contenteditable="true"></span></p>
+                <p>Email: <span contenteditable="true"></span></p>
+            </div>
+            <div class="info-block" style="text-align: left;">
+                <h3>Ship To:</h3>
+                <p>Company Name: <span contenteditable="true" style="font-weight: bold;">Taj Al Lulu General Trading Company</span></p>
+                <p>Address: <span contenteditable="true">Baghdad, Republic of Iraq</span></p>
+                <p>Contact Number: <span contenteditable="true"></span></p>
+                <p>Contact Name: <span contenteditable="true"></span></p>
+                <p>Email: <span contenteditable="true"></span></p>
+            </div>
+        </div>
+
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Description</th>
+                    <th class="text-right">Type</th>
+                    <th class="text-right">Quantity</th>
+                    <th class="text-right">Unit Price</th>
+                    <th class="text-right">VAT%</th>
+                    <th class="text-right">Amount (USD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if quote %}
+                <tr>
+                    <td contenteditable="true">
+                        <strong contenteditable="true">{{ quote.product.sku }}</strong> - {{ quote.product.name }}
+                    </td>
+                    <td class="text-right" contenteditable="true">{{ quote.quantity }}</td>
+                    <td class="text-right" contenteditable="true">${{ quote.product.selling_price }}</td>
+                    <td class="text-right" contenteditable="true">${{ quote.final_price }}</td>
+                </tr>
+                {% elif lead %}
+                <tr>
+                    <td contenteditable="true">
+                        <strong contenteditable="true"></strong>
+                    </td>
+                    <td class="text-right" contenteditable="true">1</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                    <td class="text-right" contenteditable="true">0</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td class="text-right" contenteditable="true">1</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                    <td class="text-right" contenteditable="true">0</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                </tr>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td class="text-right" contenteditable="true">1</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                    <td class="text-right" contenteditable="true">0</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="totals-section">
+            <table class="totals-table">
+                <tr>
+                    <td>Total Due:</td>
+                    <td class="text-right" contenteditable="true">$</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

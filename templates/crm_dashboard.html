@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+.card-menu a:hover, .card-menu button:hover {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+</style>
+<section class="panel-card" style="margin-bottom: 2rem;">
+  <div class="section-head" style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+    <div>
+      <p class="eyebrow">CRM</p>
+      <h2>Sales Pipeline</h2>
+    </div>
+    <div style="position: relative;">
+      <button class="primary-button" onclick="const p = document.getElementById('new-lead-popup'); p.style.display = p.style.display === 'none' ? 'block' : 'none';">+ New Lead</button>
+      
+      <div id="new-lead-popup" style="display: none; position: absolute; right: 0; top: calc(100% + 10px); width: 350px; background: #ffffff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 16px 44px rgba(32, 47, 70, 0.14); z-index: 1000; text-align: left;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--line); padding-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.2rem; color: var(--text-main);">Add New Lead</h3>
+          <button type="button" onclick="document.getElementById('new-lead-popup').style.display='none'" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-secondary);">&times;</button>
+        </div>
+        <form method="POST" action="{% url 'crm_lead_create' %}" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          {% csrf_token %}
+          <input type="hidden" name="stage" value="New">
+          <div>
+            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--text);">Opportunity Name</label>
+            <input type="text" name="opportunity_name" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text);">
+          </div>
+          <div>
+            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--text);">Contact Name</label>
+            <input type="text" name="contact_name" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text);">
+          </div>
+          <div>
+            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--text);">Contact Email</label>
+            <input type="email" name="contact_email" style="width: 100%; padding: 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text);">
+          </div>
+          <div>
+            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--text);">Contact Phone</label>
+            <input type="text" name="contact_phone" style="width: 100%; padding: 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text);">
+          </div>
+          <div>
+            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--text);">Revenue (AED)</label>
+            <input type="number" step="0.01" name="revenue" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text);">
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 0.5rem;">
+            <button type="button" class="ghost-button" onclick="document.getElementById('new-lead-popup').style.display='none'" style="padding: 0.6rem 1rem;">Cancel</button>
+            <button type="submit" class="primary-button" style="padding: 0.6rem 1rem;">Create Lead</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="kanban-board" style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem;">
+    {% for stage, leads in leads_by_stage.items %}
+    <div class="kanban-column" data-stage="{{ stage }}" ondragover="allowDrop(event)" ondrop="drop(event)" style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.02); border: 1px solid var(--line); border-radius: 8px; padding: 1rem;">
+      <h3 style="margin-top: 0; font-size: 1rem; color: var(--text-main); border-bottom: 2px solid var(--line); padding-bottom: 0.5rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+        {{ stage }}
+        <span style="background: var(--bg); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.8rem; font-weight: 500; border: 1px solid var(--line);">{{ leads|length }}</span>
+      </h3>
+      <div class="kanban-cards" style="display: flex; flex-direction: column; gap: 0.75rem; min-height: 100px;">
+        {% for lead in leads %}
+        <div class="kanban-card" draggable="true" ondragstart="drag(event)" data-id="{{ lead.pk }}" style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 6px; padding: 0.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; cursor: grab; position: relative;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <strong style="display: block; color: var(--text-main); font-size: 0.95rem;">{{ lead.opportunity_name }}</strong>
+            <div style="position: relative;">
+              <button onclick="toggleMenu(event, 'menu-{{ lead.pk }}')" style="background: none; border: none; cursor: pointer; color: var(--text-secondary); font-size: 1.2rem; padding: 0 5px;" title="Actions">⋮</button>
+              <div id="menu-{{ lead.pk }}" class="card-menu" style="display: none; position: absolute; right: 0; top: 100%; background: #ffffff; border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 100; min-width: 170px; overflow: hidden; font-size: 0.9rem;">
+                <a href="/documents/lead-quotation/{{ lead.pk }}/" target="_blank" style="display: block; padding: 8px 12px; text-decoration: none; color: var(--text-main); border-bottom: 1px solid var(--line);">📄 Quotation</a>
+                <a href="/documents/lead-proforma/{{ lead.pk }}/" target="_blank" style="display: block; padding: 8px 12px; text-decoration: none; color: var(--text-main); border-bottom: 1px solid var(--line);">🧾 Proforma Invoice</a>
+                <button onclick="openEditModal('{{ lead.pk }}', '{{ lead.opportunity_name|escapejs }}', '{{ lead.contact_name|escapejs }}', '{{ lead.revenue }}', '{{ lead.contact_email|escapejs }}', '{{ lead.contact_phone|escapejs }}', '{{ lead.stage }}'); document.getElementById('menu-{{ lead.pk }}').style.display='none';" style="display: block; width: 100%; text-align: left; padding: 8px 12px; background: none; border: none; border-bottom: 1px solid var(--line); cursor: pointer; color: var(--text-main); font-family: inherit; font-size: inherit;">✏️ Edit</button>
+                <form method="POST" action="{% url 'crm_lead_delete' lead.pk %}" onsubmit="return confirm('Are you sure you want to delete this lead?');" style="margin: 0; padding: 0;">
+                  {% csrf_token %}
+                  <button type="submit" style="display: block; width: 100%; text-align: left; padding: 8px 12px; background: none; border: none; cursor: pointer; color: #d93f3f; font-family: inherit; font-size: inherit;">🗑️ Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <span style="display: block; color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.25rem;">👤 {{ lead.contact_name }}</span>
+          {% if lead.contact_email %}<span style="display: block; color: var(--text-secondary); font-size: 0.85rem;">✉️ {{ lead.contact_email }}</span>{% endif %}
+          {% if lead.contact_phone %}<span style="display: block; color: var(--text-secondary); font-size: 0.85rem;">📞 {{ lead.contact_phone }}</span>{% endif %}
+          <strong style="display: block; color: #2e7d32; font-size: 0.85rem; margin-top: 0.5rem;">💰 AED {{ lead.revenue }}</strong>
+          <span style="display: block; color: var(--text-secondary); font-size: 0.75rem; margin-top: 0.2rem;">Created: {{ lead.created_at|date:"M d, Y" }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Modal for Edit Lead -->
+<div id="edit-lead-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(4px);">
+  <div style="background: #ffffff; padding: 2rem; border-radius: 12px; width: 100%; max-width: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--line); padding-bottom: 1rem;">
+      <h2 style="margin: 0; font-size: 1.5rem;">Edit Lead</h2>
+      <button type="button" onclick="document.getElementById('edit-lead-modal').style.display='none'" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-secondary);">&times;</button>
+    </div>
+    <form id="edit-lead-form" method="POST" action="" style="display: flex; flex-direction: column; gap: 0.75rem;">
+      {% csrf_token %}
+      <input type="hidden" name="stage" id="edit_stage">
+      <div>
+        <label style="display: block; font-weight: 500; margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--text);">Opportunity Name</label>
+        <input type="text" name="opportunity_name" id="edit_opportunity_name" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text);">
+      </div>
+      <div>
+        <label style="display: block; font-weight: 500; margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--text);">Contact Name</label>
+        <input type="text" name="contact_name" id="edit_contact_name" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text);">
+      </div>
+      <div>
+        <label style="display: block; font-weight: 500; margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--text);">Revenue (AED)</label>
+        <input type="number" step="0.01" name="revenue" id="edit_revenue" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text);">
+      </div>
+      <div>
+        <label style="display: block; font-weight: 500; margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--text);">Contact Email</label>
+        <input type="email" name="contact_email" id="edit_contact_email" style="width: 100%; padding: 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text);">
+      </div>
+      <div>
+        <label style="display: block; font-weight: 500; margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--text);">Contact Phone</label>
+        <input type="text" name="contact_phone" id="edit_contact_phone" style="width: 100%; padding: 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text);">
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 0.5rem;">
+        <button type="button" class="ghost-button" onclick="document.getElementById('edit-lead-modal').style.display='none'" style="padding: 0.6rem 1rem;">Cancel</button>
+        <button type="submit" class="primary-button" style="padding: 0.6rem 1rem;">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function openEditModal(id, oppName, contactName, revenue, email, phone, stage) {
+    document.getElementById('edit_opportunity_name').value = oppName;
+    document.getElementById('edit_contact_name').value = contactName;
+    document.getElementById('edit_revenue').value = revenue;
+    document.getElementById('edit_contact_email').value = email;
+    document.getElementById('edit_contact_phone').value = phone;
+    document.getElementById('edit_stage').value = stage;
+    document.getElementById('edit-lead-form').action = '/crm/lead/' + id + '/edit/';
+    document.getElementById('edit-lead-modal').style.display = 'flex';
+}
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("lead_id", ev.currentTarget.dataset.id);
+    ev.currentTarget.style.opacity = '0.5';
+}
+
+document.addEventListener('dragend', function(ev) {
+    if(ev.target.classList && ev.target.classList.contains('kanban-card')) {
+         ev.target.style.opacity = '1';
+    }
+});
+
+function drop(ev) {
+    ev.preventDefault();
+    var leadId = ev.dataTransfer.getData("lead_id");
+    var column = ev.currentTarget.closest('.kanban-column');
+    
+    if (!column || !leadId) return;
+    
+    var newStage = column.dataset.stage;
+
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/crm/lead/' + leadId + '/update/';
+    form.style.display = 'none';
+
+    var existingCsrf = document.querySelector('[name=csrfmiddlewaretoken]');
+    if (existingCsrf) {
+        var csrfInput = document.createElement('input');
+        csrfInput.type = 'hidden';
+        csrfInput.name = 'csrfmiddlewaretoken';
+        csrfInput.value = existingCsrf.value;
+        form.appendChild(csrfInput);
+    }
+
+    var stageInput = document.createElement('input');
+    stageInput.type = 'hidden';
+    stageInput.name = 'stage';
+    stageInput.value = newStage;
+    form.appendChild(stageInput);
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
+function toggleMenu(event, menuId) {
+    event.stopPropagation();
+    document.querySelectorAll('.card-menu').forEach(menu => {
+        if (menu.id !== menuId) menu.style.display = 'none';
+    });
+    
+    const menu = document.getElementById(menuId);
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+}
+
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.card-menu') && !event.target.closest('button[onclick^="toggleMenu"]')) {
+        document.querySelectorAll('.card-menu').forEach(menu => {
+            menu.style.display = 'none';
+        });
+    }
+});
+</script>
+{% endblock %}

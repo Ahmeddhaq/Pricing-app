@@ -1,0 +1,154 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lubricant Pricing Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">LP</div>
+        <div>
+          <div class="brand-name">Lubricant Pricing</div>
+          <div class="brand-subtitle">Control center</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-link" href="/">Dashboard</a>
+        {% if user.is_authenticated %}
+            <a class="nav-link" href="/products/">Products</a>
+            <a class="nav-link" href="/pricing/">Pricing</a>
+            <a class="nav-link" href="/crm/">CRM</a>
+          {% if user.username == "ahmed" %}
+            <a class="nav-link" href="/invite/">Invite People</a>
+          {% endif %}
+        {% endif %}
+      </nav>
+      <div class="sidebar-footer">
+        {% if user.is_authenticated %}
+          <div class="user-chip">{{ user.username }}</div>
+          <form method="post" action="/accounts/logout/">
+            {% csrf_token %}
+            <button class="ghost-button" type="submit">Logout</button>
+          </form>
+        {% else %}
+          <a class="primary-button" href="/accounts/login/">Login</a>
+        {% endif %}
+      </div>
+    </aside>
+    <main class="main-panel">
+      <div class="ambient ambient-a"></div>
+      <div class="ambient ambient-b"></div>
+      
+      {% if user.is_authenticated %}
+      <div class="top-bar" style="display: flex; justify-content: flex-end; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100;">
+        <div class="notification-bell" style="position: relative; cursor: pointer;">
+          <button id="bell-button" class="ghost-button" style="padding: 8px; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--line);">
+            🔔
+            <span id="unread-badge" style="display: none; position: absolute; top: -5px; right: -5px; background: #d93f3f; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem; font-weight: bold;">0</span>
+          </button>
+          
+          <div id="notification-dropdown" style="display: none; position: absolute; right: 0; top: 100%; width: 320px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 16px 44px rgba(32, 47, 70, 0.14); padding: 1rem; z-index: 101;">
+            <h4 style="margin-top: 0; margin-bottom: 10px; font-size: 1.1rem; border-bottom: 1px solid var(--line); padding-bottom: 8px;">Notifications</h4>
+            <div id="notification-list" style="max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;">
+              <!-- Notifications will be loaded here -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const bellBtn = document.getElementById('bell-button');
+            const dropdown = document.getElementById('notification-dropdown');
+            const badge = document.getElementById('unread-badge');
+            const list = document.getElementById('notification-list');
+            
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            function loadNotifications() {
+                fetch('/api/notifications/')
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.unread_count > 0) {
+                            badge.style.display = 'block';
+                            badge.textContent = data.unread_count;
+                        } else {
+                            badge.style.display = 'none';
+                        }
+                        
+                        list.innerHTML = '';
+                        if (data.notifications.length === 0) {
+                            list.innerHTML = '<p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">No notifications</p>';
+                        } else {
+                            data.notifications.forEach(n => {
+                                const item = document.createElement('div');
+                                item.style.padding = '8px';
+                                item.style.background = n.is_read ? 'transparent' : 'rgba(240, 162, 58, 0.05)';
+                                item.style.borderBottom = '1px solid var(--line)';
+                                item.style.fontSize = '0.9rem';
+                                item.innerHTML = `
+                                    <strong style="display:block; color: var(--text);">From: ${n.sender}</strong>
+                                    <span style="display:block; margin: 4px 0; color: var(--text-secondary);">${n.message}</span>
+                                    <small style="color: var(--muted);">${n.created_at}</small>
+                                `;
+                                list.appendChild(item);
+                            });
+                        }
+                    });
+            }
+            
+            bellBtn.addEventListener('click', () => {
+                const isHidden = dropdown.style.display === 'none';
+                dropdown.style.display = isHidden ? 'block' : 'none';
+                
+                if (isHidden) {
+                    fetch('/api/notifications/read/', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': getCookie('csrftoken')
+                        }
+                    }).then(() => {
+                        badge.style.display = 'none';
+                        loadNotifications();
+                    });
+                }
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (!bellBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+            
+            loadNotifications();
+            setInterval(loadNotifications, 30000); // Check every 30 seconds
+        });
+      </script>
+      {% endif %}
+
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>
