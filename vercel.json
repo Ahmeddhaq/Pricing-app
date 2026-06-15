@@ -2,15 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "build_files.sh",
-      "use": "@vercel/static-build",
+      "src": "pricing_app/wsgi.py",
+      "use": "@vercel/python",
       "config": {
-        "distDir": "staticfiles_build"
+        "installCommand": "pip install -r requirements.txt",
+        "buildCommand": "python manage.py collectstatic --noinput"
       }
-    },
-    {
-      "src": "vercel_app.py",
-      "use": "@vercel/python"
     }
   ],
   "routes": [
@@ -20,7 +17,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "vercel_app.py"
+      "dest": "pricing_app/wsgi.py"
     }
   ]
 }

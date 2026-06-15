@@ -4,10 +4,14 @@ version = "1.0.0"
 description = "Django Pricing App"
 requires-python = ">=3.12"
 dependencies = [
-    "Django>=4.2,<5.0",
+    "django>=4.2",
     "whitenoise>=6.6.0",
+    "python-dotenv>=1.0.0",
 ]
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.uv]
+managed = false
