@@ -1,2 +1,2 @@
-# Just create it manually with your dependencies
-echo "Django>=4.2" > requirements.txt
+Django>=4.2
+whitenoise>=6.6.0
