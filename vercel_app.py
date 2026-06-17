@@ -1,6 +1,5 @@
 import os
 from django.core.wsgi import get_wsgi_application
 
-# IMPORTANT: Replace 'your_project_name.settings' with your actual Django project settings module
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "your_project_name.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pricing_app.settings")
 app = get_wsgi_application()
