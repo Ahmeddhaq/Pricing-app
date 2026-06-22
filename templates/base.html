@@ -13,12 +13,15 @@
 <body>
   <div class="app-shell">
     <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-mark">LP</div>
-        <div>
-          <div class="brand-name">Lubricant Pricing</div>
-          <div class="brand-subtitle">Control center</div>
+      <div class="sidebar-header">
+        <div class="brand">
+          <div class="brand-mark">LP</div>
+          <div>
+            <div class="brand-name">Lubricant Pricing</div>
+            <div class="brand-subtitle">Control center</div>
+          </div>
         </div>
+        <button id="sidebar-close" class="sidebar-close-btn" aria-label="Close menu">&times;</button>
       </div>
       <nav class="sidebar-nav">
         <a class="nav-link" href="/">Dashboard</a>
@@ -47,24 +50,38 @@
       <div class="ambient ambient-a"></div>
       <div class="ambient ambient-b"></div>
       
-      {% if user.is_authenticated %}
-      <div class="top-bar" style="display: flex; justify-content: flex-end; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100;">
-        <div class="notification-bell" style="position: relative; cursor: pointer;">
-          <button id="bell-button" class="ghost-button" style="padding: 8px; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--line);">
-            🔔
-            <span id="unread-badge" style="display: none; position: absolute; top: -5px; right: -5px; background: #d93f3f; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem; font-weight: bold;">0</span>
-          </button>
-          
-          <div id="notification-dropdown" style="display: none; position: absolute; right: 0; top: 100%; width: 320px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 16px 44px rgba(32, 47, 70, 0.14); padding: 1rem; z-index: 101;">
-            <h4 style="margin-top: 0; margin-bottom: 10px; font-size: 1.1rem; border-bottom: 1px solid var(--line); padding-bottom: 8px;">Notifications</h4>
-            <div id="notification-list" style="max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;">
-              <!-- Notifications will be loaded here -->
+      <header class="app-header">
+        <button id="sidebar-toggle" class="sidebar-toggle-btn" aria-label="Open menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        
+        <div class="header-brand">
+          <div class="brand-mark-mini">LP</div>
+          <span class="brand-name-mini">Lubricant Pricing</span>
+        </div>
+        
+        <div class="header-actions">
+          {% if user.is_authenticated %}
+          <div class="notification-bell" style="position: relative; cursor: pointer;">
+            <button id="bell-button" class="ghost-button" style="padding: 8px; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--line);">
+              🔔
+              <span id="unread-badge" style="display: none; position: absolute; top: -5px; right: -5px; background: #d93f3f; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem; font-weight: bold;">0</span>
+            </button>
+            
+            <div id="notification-dropdown" style="display: none; position: absolute; right: 0; top: 100%; width: 320px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 16px 44px rgba(32, 47, 70, 0.14); padding: 1rem; z-index: 101;">
+              <h4 style="margin-top: 0; margin-bottom: 10px; font-size: 1.1rem; border-bottom: 1px solid var(--line); padding-bottom: 8px;">Notifications</h4>
+              <div id="notification-list" style="max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;">
+                <!-- Notifications will be loaded here -->
+              </div>
             </div>
           </div>
+          {% endif %}
         </div>
-      </div>
-      
-      <script>
+      </header>    <script>
         document.addEventListener("DOMContentLoaded", function() {
             const bellBtn = document.getElementById('bell-button');
             const dropdown = document.getElementById('notification-dropdown');
@@ -146,6 +163,37 @@
         });
       </script>
       {% endif %}
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleBtn = document.getElementById('sidebar-toggle');
+            const closeBtn = document.getElementById('sidebar-close');
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            document.body.appendChild(overlay);
+
+            function openSidebar() {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
+            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+            overlay.addEventListener('click', closeSidebar);
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', closeSidebar);
+            });
+        });
+      </script>
 
       {% block content %}{% endblock %}
     </main>

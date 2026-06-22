@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+<div class="page-header">
   <div>
     <h1 style="font-size: 2rem; margin: 0; color: var(--text);">Production Control Center</h1>
     <p style="color: var(--muted); margin: 0.5rem 0 0 0;">Manage pricing, maintain specifications, and monitor cost updates.</p>
@@ -19,7 +19,7 @@
     </div>
   </div>
   
-  <form method="GET" action="{% url 'dashboard' %}" class="form-grid search-form" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
+  <form method="GET" action="{% url 'dashboard' %}" class="search-form" style="margin-bottom: 1.5rem;">
     <select name="q" style="flex: 1; margin-top: 0; height: 50px; padding: 0 1rem; border-radius: 8px; border: 1px solid var(--line); font-family: inherit; font-size: 1rem; background-color: var(--card-bg); color: var(--text);">
       <option value="">Select a product to update cost...</option>
       {% for mp in master_products %}
@@ -32,7 +32,7 @@
   {% if query %}
   <div class="stack-list">
     {% for product in search_results %}
-    <div class="list-row" style="align-items: flex-start; padding: 1.5rem; background: rgba(240, 162, 58, 0.03); border-color: rgba(240, 162, 58, 0.2);">
+    <div class="list-row cost-update-card" style="padding: 1.5rem; background: rgba(240, 162, 58, 0.03); border-color: rgba(240, 162, 58, 0.2);">
       <div style="flex: 1;">
         <strong style="font-size: 1.1rem; color: var(--text);">{{ product.sku }} - {{ product.name }}</strong>
         <p style="margin: 0.5rem 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
@@ -45,24 +45,24 @@
         </p>
       </div>
       
-      <div style="flex: 1.2; background: rgba(255, 255, 255, 0.5); padding: 1rem; border-radius: 12px; border: 1px solid var(--line);">
-        <form method="POST" action="{% url 'dashboard' %}" class="form-grid" style="display: flex; gap: 1rem; align-items: flex-end;">
+      <div class="form-wrapper-card" style="flex: 1.2; background: rgba(255, 255, 255, 0.5); padding: 1rem; border-radius: 12px; border: 1px solid var(--line); width: 100%;">
+        <form method="POST" action="{% url 'dashboard' %}" class="cost-update-form">
           {% csrf_token %}
           <input type="hidden" name="update_cost" value="1">
           <input type="hidden" name="product_id" value="{{ product.id }}">
           
-          <div style="flex: 1;">
+          <div style="flex: 1; width: 100%;">
             <label style="display: block; font-weight: 500; font-size: 0.85rem; margin-bottom: 4px;">Production Cost ($)</label>
-            <input type="number" step="0.01" name="production_price" value="{{ product.production_price }}" required style="margin: 0; padding: 10px; font-weight: bold; color: var(--accent-strong);">
+            <input type="number" step="0.01" name="production_price" value="{{ product.production_price }}" required style="margin: 0; padding: 10px; font-weight: bold; color: var(--accent-strong); width: 100%;">
           </div>
           
-          <div style="flex: 1;">
+          <div style="flex: 1; width: 100%;">
             <label style="display: block; font-weight: 500; font-size: 0.85rem; margin-bottom: 4px;">Profit Margin (%)</label>
-            <input type="number" step="0.01" name="profit_percent" value="{{ product.profit_percent }}" required style="margin: 0; padding: 10px;">
+            <input type="number" step="0.01" name="profit_percent" value="{{ product.profit_percent }}" required style="margin: 0; padding: 10px; width: 100%;">
           </div>
           
-          <div>
-            <button type="submit" class="ghost-button" style="padding: 10px 16px; margin: 0; height: 44px; color: var(--accent-strong); border-color: rgba(240, 162, 58, 0.4); background: rgba(240, 162, 58, 0.08);">Update</button>
+          <div style="width: 100%;">
+            <button type="submit" class="ghost-button" style="padding: 10px 16px; margin: 0; height: 44px; color: var(--accent-strong); border-color: rgba(240, 162, 58, 0.4); background: rgba(240, 162, 58, 0.08); width: 100%;">Update</button>
           </div>
         </form>
       </div>
