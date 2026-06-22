@@ -1,0 +1,5732 @@
+[
+{
+    "model": "auth.group",
+    "fields": {
+        "name": "Sales",
+        "permissions": []
+    }
+},
+{
+    "model": "auth.group",
+    "fields": {
+        "name": "Production",
+        "permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$GMir8cnN2ek2VfOCTaQtls$KgJ///F25Fr5j/swVM+JmZU1UbxwF7t4G45zzY/PHRY=",
+        "last_login": "2026-06-15T07:32:05.036Z",
+        "is_superuser": true,
+        "username": "Arshad al Haq",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-08T17:44:05.602Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$AgaPPCZwxfVFofv5xZFn7L$eEVx3vfc0KA4aXVSPvsTaimWkwkBXSECbKh6sKn2its=",
+        "last_login": "2026-06-12T02:42:50.234Z",
+        "is_superuser": false,
+        "username": "Ahmed",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-12T02:42:33.078Z",
+        "groups": [
+            [
+                "Production"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$5n4KZgMmpjUUYd65A6W9n2$6TJwHNOVEij1fm4tWeeNBLMzDTefHbY/gW9CpyD4nNY=",
+        "last_login": "2026-06-12T11:51:09.294Z",
+        "is_superuser": false,
+        "username": "testuser",
+        "first_name": "",
+        "last_name": "",
+        "email": "test@test.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-12T11:40:06.759Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "03c6f1bungwpkz0icglznbz515l9kruk",
+    "fields": {
+        "session_data": ".eJxVjM1qxCAYAF-lfOcgGmNMPBZ6LHvsoRTx58vG3VSzRmnLsu9eAjm015lh7qBNLbOuG2YdPChg0Pxl1rgrxl34i4nnRFyKJQdL9oQcdiOvyePyfLT_BrPZZlDAR9bKfuIjE9g5ZlEOdmx76UcqTSuHoaWD4bTrJt8LN6AQnHLjrZ1GwXxLoQGX0RTU-O1w0Tl9baDe77BdKygQb92eRPOJoOAlnkPEp1NYoIFbNbGE8gNKENrAmpOvroQU9ZqDQ1C8O_gUil4xO4wFFBOEPj4ev_9rXbc:1wWuXv:PfwU6LcPrhH-9pJ_tQqc5mH7VvXtXRP8mAzWgilqUIM",
+        "expire_date": "2026-06-23T11:23:03.338Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "8t24hr4x7aopn4zff9g95f2nic2m87i1",
+    "fields": {
+        "session_data": ".eJxVjEsOwiAUAO_y1obwKb8u3XsG8uCBVA0kpV0Z726adKHbmcm8IeC-1bCPvIaFYAYBl18WMT1zOwQ9sN07S71t6xLZkbDTDnbrlF_Xs_0bVBwVZlBeSGuK8kLnKYmYrYteGkueW5TWOckdKj5NhYxOLmutuEKKsXgtSHL4fAG1Rzbr:1wWe1O:7fEvyQoHHFDL37RtGqdKRj19CZy9TCX6uweef2Z9PAw",
+        "expire_date": "2026-06-22T17:44:22.375Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "bcte1crp2sywagfbyowcgk17ko4kcd13",
+    "fields": {
+        "session_data": ".eJxVjEsOwiAUAO_y1obwKb8u3XsG8uCBVA0kpV0Z726adKHbmcm8IeC-1bCPvIaFYAYBl18WMT1zOwQ9sN07S71t6xLZkbDTDnbrlF_Xs_0bVBwVZlBeSGuK8kLnKYmYrYteGkueW5TWOckdKj5NhYxOLmutuEKKsXgtSHL4fAG1Rzbr:1wWe5D:bKot7ILQs-ETnI_LUmeaZwpf4URJPeqSB9aunVWkDXw",
+        "expire_date": "2026-06-22T17:48:19.427Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "gzig6yl4va4tez6hqy15m0icm8867mw2",
+    "fields": {
+        "session_data": ".eJxVjLsOwjAMAP_FM4qSYAe3IzvfENl50AJqpaadEP-OKnWA9e50b4iyrUPcWlnimKGHAKdfppKeZdpFfsh0n02ap3UZ1eyJOWwztzmX1_Vo_waDtAF6cJ5LuriukibNgo7J6pkds6D3mGz1Xa2WusoU1CIyOUUJ5H3gzAifL9Q1Nu0:1wY0Pl:FqXfPCw5sZqvU0XTekBUhu9OYREBPnVWuCt2pP4oG7g",
+        "expire_date": "2026-06-26T11:51:09.298Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "h3t0lh366lt6xz943km7qqf0q4zrk6ht",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQAP-yNbLsrI84JX3eEO3aCw4gW8pRIf6OIqWAdmY0b5ho38q0r7JMc4YBHFx-GVN6Sj1EflC9N5Va3ZaZ1ZGo065qbFle17P9GxRaCwzARK6XW-glR06JrfbBsCH0gsb5XhJyjNZ1qDvMLOKDtxis0eJs1gifL_vLN6A:1wXrr8:NOKoNNwSnvI8LpbcLYsRFnJD3VNvb_0Xk_A_mV6lEkg",
+        "expire_date": "2026-06-26T02:42:50.240Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "i9qivm5r4lh7wfpnq5wqlkdp37hg7i9b",
+    "fields": {
+        "session_data": ".eJxVjLsOwjAMAP_FM4qSYAe3IzvfENl50AJqpaadEP-OKnWA9e50b4iyrUPcWlnimKGHAKdfppKeZdpFfsh0n02ap3UZ1eyJOWwztzmX1_Vo_waDtAF6cJ5LuriukibNgo7J6pkds6D3mGz1Xa2WusoU1CIyOUUJ5H3gzAifL9Q1Nu0:1wY0F6:sC2sCwHC4kH3L5j-APfeaO1v-L79BaBcpz9ktGkclc4",
+        "expire_date": "2026-06-26T11:40:08.371Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "j8h0sak1jct6oc3enovaiey94lk4ct5g",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQBt9lz4ZYKEvp0XufgQDfYquGJv05Gd_dNOlBrzOTeVOI-zaGfZUlTKCeDF1-WYr5KfUQeMR6n1We67ZMSR2JOu2qhhnyup3t32CM60g9udK1XltAkDrnDduSkDm1MebUZG-5FA0BN1etDXOBMww4o9GI64Q-Xwa_OKw:1wXIly:vQ_j8jhBs6YHJgIBZNgHwE4psO1-qMSHCivQ15OLlFQ",
+        "expire_date": "2026-06-24T13:15:10.112Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "jbbuv9kda4mo0fz3ampduhiybza5ikyx",
+    "fields": {
+        "session_data": ".eJxVjEsOwiAUAO_y1obwKb8u3XsG8uCBVA0kpV0Z726adKHbmcm8IeC-1bCPvIaFYAYBl18WMT1zOwQ9sN07S71t6xLZkbDTDnbrlF_Xs_0bVBwVZlBeSGuK8kLnKYmYrYteGkueW5TWOckdKj5NhYxOLmutuEKKsXgtSHL4fAG1Rzbr:1wX89B:hZufy5fouW9z6h1Z_NV5MSkbdNSWciaTOuhX0uW5yi4",
+        "expire_date": "2026-06-24T01:54:25.858Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "k77s7cbh06uwyupgzu8bl54m23f7c3ze",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBe9CHSEWs4BTpvcZEJ8lOIlAMnYV5e6xJRdJ-2bmvZnz21rc1mlxc2JXBuzyuwUfn1QPkB6-3huPra7LHPih8JN2PrVEr9vp_h0U38teZ52yEWRIWgsKjY4oYlSoiQYjBEgSWQ87QDvKYAMFlXAE9CAjIBj2-QLMrzbo:1wZ1nh:8aI4iogU2GYrvsu2fv1wekvaftQG2LOIlW3tEYSmIg0",
+        "expire_date": "2026-06-29T07:32:05.053Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "nrs09i91o4ruwxferctqgj465ctaq2bw",
+    "fields": {
+        "session_data": ".eJxVjEsOwiAUAO_y1obwKb8u3XsG8uCBVA0kpV0Z726adKHbmcm8IeC-1bCPvIaFYAYBl18WMT1zOwQ9sN07S71t6xLZkbDTDnbrlF_Xs_0bVBwVZlBeSGuK8kLnKYmYrYteGkueW5TWOckdKj5NhYxOLmutuEKKsXgtSHL4fAG1Rzbr:1wWe5D:bKot7ILQs-ETnI_LUmeaZwpf4URJPeqSB9aunVWkDXw",
+        "expire_date": "2026-06-22T17:48:19.244Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ykksz4bcisjt8qzsibrtfzuph2xz8jfv",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQBt9lz4ZYKEvp0XufgQDfYquGJv05Gd_dNOlBrzOTeVOI-zaGfZUlTKCeDF1-WYr5KfUQeMR6n1We67ZMSR2JOu2qhhnyup3t32CM60g9udK1XltAkDrnDduSkDm1MebUZG-5FA0BN1etDXOBMww4o9GI64Q-Xwa_OKw:1wXIi2:BvkmzC1i2Jb51NKj4wJI7fsQSps89EyfGyvTIqDjig0",
+        "expire_date": "2026-06-24T13:11:06.063Z"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 6,
+    "fields": {
+        "code": "1182001",
+        "description": "BAROX ULTRA 0W16",
+        "viscosity": "",
+        "specification": "SP",
+        "approval": "ILGAC GF-8",
+        "packaging": "12x1",
+        "liters_per_case": null
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 7,
+    "fields": {
+        "code": "1182004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 8,
+    "fields": {
+        "code": "1182005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 9,
+    "fields": {
+        "code": "1182020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 10,
+    "fields": {
+        "code": "1182208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 11,
+    "fields": {
+        "code": "1101001",
+        "description": "Barox ULTRA",
+        "viscosity": "0W20",
+        "specification": "API SP",
+        "approval": "ILSAC GF-6",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 12,
+    "fields": {
+        "code": "1101004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 13,
+    "fields": {
+        "code": "1101005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 14,
+    "fields": {
+        "code": "1101020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 15,
+    "fields": {
+        "code": "1101208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 16,
+    "fields": {
+        "code": "1832001",
+        "description": "Barox ULTRA",
+        "viscosity": "0W30",
+        "specification": "API SP",
+        "approval": "ILSAC GF-6",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 17,
+    "fields": {
+        "code": "1832004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 18,
+    "fields": {
+        "code": "1832005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 19,
+    "fields": {
+        "code": "1832020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 20,
+    "fields": {
+        "code": "1832208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 21,
+    "fields": {
+        "code": "1833001",
+        "description": "BAROX ULTRA",
+        "viscosity": "0W30",
+        "specification": "API SN",
+        "approval": "MB 229.31, 229.51",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 22,
+    "fields": {
+        "code": "1833004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 23,
+    "fields": {
+        "code": "1833005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 24,
+    "fields": {
+        "code": "1833020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 25,
+    "fields": {
+        "code": "1833208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 26,
+    "fields": {
+        "code": "1836001",
+        "description": "Barox ULTRA",
+        "viscosity": "0W30",
+        "specification": "API SN/CF  ACEA C3",
+        "approval": "MB229.52/51/31 RN0700/0710",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 27,
+    "fields": {
+        "code": "1836004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 28,
+    "fields": {
+        "code": "1836005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 29,
+    "fields": {
+        "code": "1836208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 30,
+    "fields": {
+        "code": "1834001",
+        "description": "Barox ULTRA",
+        "viscosity": "0W20 API SN+ C5",
+        "specification": "API SN+.        API SP",
+        "approval": "MB 229.71",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 31,
+    "fields": {
+        "code": "1834004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 32,
+    "fields": {
+        "code": "1834005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 33,
+    "fields": {
+        "code": "1834020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 34,
+    "fields": {
+        "code": "1834208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 35,
+    "fields": {
+        "code": "1131001",
+        "description": "Barox ULTRA",
+        "viscosity": "0W20 API SN",
+        "specification": "API SN",
+        "approval": "MB 229.31, 229.51",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 36,
+    "fields": {
+        "code": "1131004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 37,
+    "fields": {
+        "code": "1131005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 38,
+    "fields": {
+        "code": "1131020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 39,
+    "fields": {
+        "code": "1131208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 40,
+    "fields": {
+        "code": "1132001",
+        "description": "Barox ULTRA",
+        "viscosity": "0W40 API SP",
+        "specification": "API SP",
+        "approval": "MB229.52/51/31 RN0700/0710",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 41,
+    "fields": {
+        "code": "1122001",
+        "description": "Barox ULTRA",
+        "viscosity": "0w40",
+        "specification": "API SN",
+        "approval": "MB229.52/51/31 RN0700/0710",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 42,
+    "fields": {
+        "code": "1122004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4X4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 43,
+    "fields": {
+        "code": "1122005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 44,
+    "fields": {
+        "code": "1122208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 45,
+    "fields": {
+        "code": "1813001",
+        "description": "Barox ULTRA",
+        "viscosity": "5W20",
+        "specification": "API SP",
+        "approval": "ILSAC GF-6",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 46,
+    "fields": {
+        "code": "1813004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 47,
+    "fields": {
+        "code": "1813005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 48,
+    "fields": {
+        "code": "1813020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 49,
+    "fields": {
+        "code": "1813208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 50,
+    "fields": {
+        "code": "1814001",
+        "description": "Barox ULTRA",
+        "viscosity": "5w20",
+        "specification": "API SN",
+        "approval": "ILSAC GF-5",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 51,
+    "fields": {
+        "code": "1814004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 52,
+    "fields": {
+        "code": "1814005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 53,
+    "fields": {
+        "code": "1814208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 54,
+    "fields": {
+        "code": "1816001",
+        "description": "Barox ULTRA",
+        "viscosity": "5W30",
+        "specification": "API SP",
+        "approval": "ILSAC GF-6",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 55,
+    "fields": {
+        "code": "1816004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 56,
+    "fields": {
+        "code": "1816005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 57,
+    "fields": {
+        "code": "1816020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 58,
+    "fields": {
+        "code": "1816208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 59,
+    "fields": {
+        "code": "1119001",
+        "description": "Barox ULTRA",
+        "viscosity": "5W30",
+        "specification": "API SN",
+        "approval": "MB 229.31/51/52, RN 0700/0710",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 60,
+    "fields": {
+        "code": "1119004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 61,
+    "fields": {
+        "code": "1119005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 62,
+    "fields": {
+        "code": "1119020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 63,
+    "fields": {
+        "code": "1119208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 64,
+    "fields": {
+        "code": "1818001",
+        "description": "Barox ULTRA",
+        "viscosity": "5W30",
+        "specification": "API SN, SN plus   ACEA C3",
+        "approval": "MB 229.31",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 65,
+    "fields": {
+        "code": "1818004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 66,
+    "fields": {
+        "code": "1818005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 67,
+    "fields": {
+        "code": "1818208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 68,
+    "fields": {
+        "code": "1104001",
+        "description": "Barox ULTRA",
+        "viscosity": "5W30",
+        "specification": "API SN",
+        "approval": "ACEA C4, MB 226.51, RN 0720",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 69,
+    "fields": {
+        "code": "1104004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 70,
+    "fields": {
+        "code": "1104005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 71,
+    "fields": {
+        "code": "1104208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 72,
+    "fields": {
+        "code": "1188001",
+        "description": "Barox ULTRA",
+        "viscosity": "5W30",
+        "specification": "API SN  ACEA A3/B4",
+        "approval": "BMW LL01, MB 229.3 / 229.5/ 226.5, Porsche A40, PSA B71 2296, VW 502 00 / 505 00, Renault RN 0700/0710",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 73,
+    "fields": {
+        "code": "1188004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 74,
+    "fields": {
+        "code": "1188005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 75,
+    "fields": {
+        "code": "1188020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 76,
+    "fields": {
+        "code": "1188208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 77,
+    "fields": {
+        "code": "1121001",
+        "description": "Barox ULTRA",
+        "viscosity": "5W40",
+        "specification": "API SN  ACEA A3/B4",
+        "approval": "BMW LL01, MB 229.3 / 229.5/ 226.5, Porsche A40, PSA B71 2296, VW 502 00 / 505 00, Renault RN 0700/0710",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 78,
+    "fields": {
+        "code": "1121004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 79,
+    "fields": {
+        "code": "1121005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 80,
+    "fields": {
+        "code": "1121020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 81,
+    "fields": {
+        "code": "1121208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 82,
+    "fields": {
+        "code": "1821001",
+        "description": "Barox ULTRA",
+        "viscosity": "5W40 API SP",
+        "specification": "API SP",
+        "approval": "ILSAC GF-6",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 83,
+    "fields": {
+        "code": "1821004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 84,
+    "fields": {
+        "code": "1821005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 85,
+    "fields": {
+        "code": "1821020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 86,
+    "fields": {
+        "code": "1821208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 87,
+    "fields": {
+        "code": "1105001",
+        "description": "Barox ULTRA",
+        "viscosity": "5W40 SN",
+        "specification": "API SN",
+        "approval": "ACEA C4, MB 226.51,MB 229.31/51, RN 0720",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 88,
+    "fields": {
+        "code": "1105004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 89,
+    "fields": {
+        "code": "1105005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 90,
+    "fields": {
+        "code": "1105020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 91,
+    "fields": {
+        "code": "1105208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 92,
+    "fields": {
+        "code": "1110001",
+        "description": "Barox ULTRA",
+        "viscosity": "10W60",
+        "specification": "API SN",
+        "approval": "BMW LL01, MB 229.3 / 229.5/ 226.5, VW 502 00 / 505 00, Renault RN 0700/0710",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 93,
+    "fields": {
+        "code": "1110004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 94,
+    "fields": {
+        "code": "1110005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 95,
+    "fields": {
+        "code": "1110208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 96,
+    "fields": {
+        "code": "1123001",
+        "description": "Barox ULTRA",
+        "viscosity": "10W40",
+        "specification": "API SN  ACEA A3/B4",
+        "approval": "MB 229.3 / VW 502 00 505 00 RN 0700 / 710",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 97,
+    "fields": {
+        "code": "1123004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 98,
+    "fields": {
+        "code": "1123005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 99,
+    "fields": {
+        "code": "1123208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 100,
+    "fields": {
+        "code": "11847001",
+        "description": "Barox ULTRA",
+        "viscosity": "10W40",
+        "specification": "API SN",
+        "approval": "ACEA A3/B4, VW 50200/50500, RN 0700/0710",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 101,
+    "fields": {
+        "code": "11847004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 102,
+    "fields": {
+        "code": "11847005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 103,
+    "fields": {
+        "code": "11847208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 104,
+    "fields": {
+        "code": "1109001",
+        "description": "Barox ULTRA",
+        "viscosity": "10W40",
+        "specification": "API SL/CD",
+        "approval": "MB 229.1, VW 50200/50500",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 105,
+    "fields": {
+        "code": "1109004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 106,
+    "fields": {
+        "code": "1109005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 107,
+    "fields": {
+        "code": "1109208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 108,
+    "fields": {
+        "code": "1118001",
+        "description": "Barox ULTRA",
+        "viscosity": "10W40",
+        "specification": "API SG/CD",
+        "approval": "",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 109,
+    "fields": {
+        "code": "1118004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 110,
+    "fields": {
+        "code": "1118005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 111,
+    "fields": {
+        "code": "1118020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 112,
+    "fields": {
+        "code": "1118208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 113,
+    "fields": {
+        "code": "11846001",
+        "description": "Barox ULTRA",
+        "viscosity": "10W30",
+        "specification": "API SG/CD",
+        "approval": "",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 114,
+    "fields": {
+        "code": "11846004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 115,
+    "fields": {
+        "code": "11846005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 116,
+    "fields": {
+        "code": "11846020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 117,
+    "fields": {
+        "code": "11846208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 118,
+    "fields": {
+        "code": "1819001",
+        "description": "Barox ULTRA",
+        "viscosity": "10W30",
+        "specification": "API SN",
+        "approval": "ACEA A3/B4, VW 50200/50500, RN 0700/0710",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 119,
+    "fields": {
+        "code": "1819004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 120,
+    "fields": {
+        "code": "1819005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 121,
+    "fields": {
+        "code": "1819020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 122,
+    "fields": {
+        "code": "1819208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 123,
+    "fields": {
+        "code": "1820001",
+        "description": "Barox ULTRA",
+        "viscosity": "10W30",
+        "specification": "API SL",
+        "approval": "MB 229.1, VW 50200/50500",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 124,
+    "fields": {
+        "code": "1820004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 125,
+    "fields": {
+        "code": "1820005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 126,
+    "fields": {
+        "code": "1820020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 127,
+    "fields": {
+        "code": "1820208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 128,
+    "fields": {
+        "code": "1822001",
+        "description": "Barox ULTRA",
+        "viscosity": "15W40",
+        "specification": "API SN",
+        "approval": "ACEA A3/B4, VW 50200/50500, RN 0700/0710",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 129,
+    "fields": {
+        "code": "1822004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 130,
+    "fields": {
+        "code": "1822005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 131,
+    "fields": {
+        "code": "1822020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 132,
+    "fields": {
+        "code": "1822208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 133,
+    "fields": {
+        "code": "1112001",
+        "description": "Barox ULTRA",
+        "viscosity": "15W40",
+        "specification": "API SL",
+        "approval": "MB 229.1  (V2012.1), MAN M3275-1, MTU Type 2, Volvo VDS",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 134,
+    "fields": {
+        "code": "1112004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 135,
+    "fields": {
+        "code": "1112005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 136,
+    "fields": {
+        "code": "1112208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 137,
+    "fields": {
+        "code": "1113001",
+        "description": "Barox ULTRA",
+        "viscosity": "15W40",
+        "specification": "API SJ/CF",
+        "approval": "",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 138,
+    "fields": {
+        "code": "1113004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 139,
+    "fields": {
+        "code": "1113005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 140,
+    "fields": {
+        "code": "1113208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 141,
+    "fields": {
+        "code": "1823001",
+        "description": "Barox ULTRA",
+        "viscosity": "20W50 SJ/CF",
+        "specification": "API SJ/CF",
+        "approval": "",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 142,
+    "fields": {
+        "code": "1823004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 143,
+    "fields": {
+        "code": "1823005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 144,
+    "fields": {
+        "code": "1823020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 145,
+    "fields": {
+        "code": "1823208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 146,
+    "fields": {
+        "code": "1848001",
+        "description": "Barox ULTRA",
+        "viscosity": "20W40",
+        "specification": "API SN",
+        "approval": "MB 229.1",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 147,
+    "fields": {
+        "code": "1848004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 148,
+    "fields": {
+        "code": "1848005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 149,
+    "fields": {
+        "code": "1848020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 150,
+    "fields": {
+        "code": "1848208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 151,
+    "fields": {
+        "code": "1114001",
+        "description": "Barox ULTRA",
+        "viscosity": "20W50",
+        "specification": "API SL/CD",
+        "approval": "MB 229.1",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 152,
+    "fields": {
+        "code": "1114004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 153,
+    "fields": {
+        "code": "1114005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 154,
+    "fields": {
+        "code": "1114020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 155,
+    "fields": {
+        "code": "1114208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 156,
+    "fields": {
+        "code": "1117001",
+        "description": "Barox ULTRA",
+        "viscosity": "20W50 SG/CD",
+        "specification": "API SG/CD",
+        "approval": "",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 157,
+    "fields": {
+        "code": "1117004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 158,
+    "fields": {
+        "code": "1117005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 159,
+    "fields": {
+        "code": "1117020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 160,
+    "fields": {
+        "code": "1117208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 161,
+    "fields": {
+        "code": "2169001",
+        "description": "Barox VIATA",
+        "viscosity": "5w30",
+        "specification": "API CK4-     ACEA E7/E9",
+        "approval": "ACEA E6/E9,VDS-4.5/5,MAN 3337, CAT-ECF-3, MB 228.51/52, MTU 3.1, Deutz DQC IV-18, Cummins CES 20086",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 162,
+    "fields": {
+        "code": "2169005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 163,
+    "fields": {
+        "code": "2169020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 164,
+    "fields": {
+        "code": "2169208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 165,
+    "fields": {
+        "code": "2154001",
+        "description": "Barox VIATA",
+        "viscosity": "10W40",
+        "specification": "API CI-4 ACEA E4/E7",
+        "approval": "MB 228.3 / MAN M 3275-1 / MTU TYPE II / VOLVO VDS-3 / MACK EO-N / RLD-2 / CES 20076 / 77",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 166,
+    "fields": {
+        "code": "2154005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 167,
+    "fields": {
+        "code": "2154020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 168,
+    "fields": {
+        "code": "2154208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 169,
+    "fields": {
+        "code": "2163001",
+        "description": "Barox VIATA",
+        "viscosity": "10W40",
+        "specification": "10W40-CJ-4/SN E9",
+        "approval": "ACEA E6/E9/E7, MB 228.51/228.31, MAN M-3477/M-3575, MACK\nEO-N PLUS, MACK EO-N PREMIUM PLUS, Global DHD-1, JASO DH-1, Deutz III-10\nLA, Cummins 71/72/76/77/78 VDS-4",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 170,
+    "fields": {
+        "code": "2163005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 171,
+    "fields": {
+        "code": "2163020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 172,
+    "fields": {
+        "code": "2163208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 173,
+    "fields": {
+        "code": "2158001",
+        "description": "Barox VIATA",
+        "viscosity": "15W40",
+        "specification": "API CI-4     ACEA E7",
+        "approval": "MB 228.3 / MAN M 3275-1 / MTU TYPE II / VOLVO VDS-3 / MACK EO-N / RLD-2 / CES 20076 / 77",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 174,
+    "fields": {
+        "code": "2158005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 175,
+    "fields": {
+        "code": "2158020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 176,
+    "fields": {
+        "code": "2158208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 177,
+    "fields": {
+        "code": "2159001",
+        "description": "Barox VIATA",
+        "viscosity": "15W40",
+        "specification": "API CH-4",
+        "approval": "MB 228.3 / MAN M 3275-1 / MTU TYPE II / VOLVO VDS-3 / MACK EO-N / RLD-2 / CES 20076 / 77",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 178,
+    "fields": {
+        "code": "2159004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 179,
+    "fields": {
+        "code": "2159005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 180,
+    "fields": {
+        "code": "2159020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 181,
+    "fields": {
+        "code": "2159208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 182,
+    "fields": {
+        "code": "2160001",
+        "description": "Barox VIATA",
+        "viscosity": "15W40",
+        "specification": "API CF-4",
+        "approval": "",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 183,
+    "fields": {
+        "code": "2160005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 184,
+    "fields": {
+        "code": "2160020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 185,
+    "fields": {
+        "code": "2160208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 186,
+    "fields": {
+        "code": "2167001",
+        "description": "Barox VIATA",
+        "viscosity": "20W50 CI4",
+        "specification": "API CI-4,      ACEA E7",
+        "approval": "MB 228.3 / MAN M 3275-1 / MTU TYPE II / VOLVO VDS-3 / MACK EO-N / RLD-2 / CES 20076 / 77",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 187,
+    "fields": {
+        "code": "2167005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 188,
+    "fields": {
+        "code": "2167020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 189,
+    "fields": {
+        "code": "2167208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 190,
+    "fields": {
+        "code": "2168001",
+        "description": "Barox VIATA",
+        "viscosity": "20W50",
+        "specification": "API CH-4",
+        "approval": "",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 191,
+    "fields": {
+        "code": "2168005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 192,
+    "fields": {
+        "code": "2168020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 193,
+    "fields": {
+        "code": "2168208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 194,
+    "fields": {
+        "code": "2162001",
+        "description": "Barox VIATA",
+        "viscosity": "20W50",
+        "specification": "API CF-4",
+        "approval": "",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 195,
+    "fields": {
+        "code": "2162005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 196,
+    "fields": {
+        "code": "2162020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 197,
+    "fields": {
+        "code": "2162208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "200.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 198,
+    "fields": {
+        "code": "2192001",
+        "description": "Barox VIATA",
+        "viscosity": "SAE 70",
+        "specification": "API CH-4",
+        "approval": "",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 199,
+    "fields": {
+        "code": "2198004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 200,
+    "fields": {
+        "code": "2198005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 201,
+    "fields": {
+        "code": "2198020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 202,
+    "fields": {
+        "code": "2198208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 203,
+    "fields": {
+        "code": "2152001",
+        "description": "Barox VIATA",
+        "viscosity": "SAE 50",
+        "specification": "API CH-4",
+        "approval": "",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 204,
+    "fields": {
+        "code": "2152004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 205,
+    "fields": {
+        "code": "2152005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 206,
+    "fields": {
+        "code": "2152020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 207,
+    "fields": {
+        "code": "2152208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 208,
+    "fields": {
+        "code": "2177001",
+        "description": "Barox VIATA",
+        "viscosity": "SAE 70",
+        "specification": "API CD",
+        "approval": "",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 209,
+    "fields": {
+        "code": "2171004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 210,
+    "fields": {
+        "code": "2171005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 211,
+    "fields": {
+        "code": "2171020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 212,
+    "fields": {
+        "code": "2174208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 213,
+    "fields": {
+        "code": "2176001",
+        "description": "Barox VIATA",
+        "viscosity": "SAE 60",
+        "specification": "API CD",
+        "approval": "",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 214,
+    "fields": {
+        "code": "2176004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 215,
+    "fields": {
+        "code": "2176005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 216,
+    "fields": {
+        "code": "2176020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 217,
+    "fields": {
+        "code": "2176208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 218,
+    "fields": {
+        "code": "2197001",
+        "description": "BAROX VIATA",
+        "viscosity": "SAE 40",
+        "specification": "CF",
+        "approval": "",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 219,
+    "fields": {
+        "code": "2197004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 220,
+    "fields": {
+        "code": "2197005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 221,
+    "fields": {
+        "code": "2197020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 222,
+    "fields": {
+        "code": "2197208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 223,
+    "fields": {
+        "code": "2173001",
+        "description": "Barox VIATA",
+        "viscosity": "SAE 40",
+        "specification": "API CD",
+        "approval": "",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 224,
+    "fields": {
+        "code": "2173004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 225,
+    "fields": {
+        "code": "2173005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 226,
+    "fields": {
+        "code": "2173020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 227,
+    "fields": {
+        "code": "2173208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 228,
+    "fields": {
+        "code": "2198001",
+        "description": "BAROX",
+        "viscosity": "SAE 60",
+        "specification": "API CF",
+        "approval": "",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 229,
+    "fields": {
+        "code": "2175001",
+        "description": "BAROX",
+        "viscosity": "SAE 50",
+        "specification": "API CF",
+        "approval": "",
+        "packaging": "12X1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 230,
+    "fields": {
+        "code": "2175005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 231,
+    "fields": {
+        "code": "2175020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 232,
+    "fields": {
+        "code": "2175208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 233,
+    "fields": {
+        "code": "7300004",
+        "description": "Barox BOOSTA",
+        "viscosity": "HLP 32",
+        "specification": "",
+        "approval": "DIN 51524-2, ISO 11158, ASTM D6158, JCMAS P041HK, AIST 126+127, SAE MS1004, GM LS2, SEB 181 222",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 234,
+    "fields": {
+        "code": "7300005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 235,
+    "fields": {
+        "code": "7300020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 236,
+    "fields": {
+        "code": "7300208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 237,
+    "fields": {
+        "code": "7307004",
+        "description": "Barox BOOSTA",
+        "viscosity": "HLP 32     Group II base oil",
+        "specification": "",
+        "approval": "DIN 51524-2, ISO 11158, ASTM D6158, JCMAS P041HK, AIST 126+127, SAE MS1004, GM LS2, SEB 181 222",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 238,
+    "fields": {
+        "code": "7307005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 239,
+    "fields": {
+        "code": "7307020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 240,
+    "fields": {
+        "code": "7307208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 241,
+    "fields": {
+        "code": "7309004",
+        "description": "Barox BOOSTA",
+        "viscosity": "HLP 68     Group II base oil",
+        "specification": "",
+        "approval": "DIN 51524-2, ISO 11158, ASTM D6158, JCMAS P041HK, AIST 126+127, SAE MS1004, GM LS2, SEB 181 222",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 242,
+    "fields": {
+        "code": "7309005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 243,
+    "fields": {
+        "code": "7309020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 244,
+    "fields": {
+        "code": "7309208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 245,
+    "fields": {
+        "code": "7308004",
+        "description": "Barox BOOSTA",
+        "viscosity": "HLP 46     Group II base oil",
+        "specification": "",
+        "approval": "DIN 51524-2, ISO 11158, ASTM D6158, JCMAS P041HK, AIST 126+127, SAE MS1004, GM LS2, SEB 181 222",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 246,
+    "fields": {
+        "code": "7308005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 247,
+    "fields": {
+        "code": "7308020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 248,
+    "fields": {
+        "code": "7308208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 249,
+    "fields": {
+        "code": "7301004",
+        "description": "Barox BOOSTA",
+        "viscosity": "HLP 46",
+        "specification": "",
+        "approval": "DIN 51524-2, ISO 11158, ASTM D6158, JCMAS P041HK, AIST 126+127, SAE MS1004, GM LS2, SEB 181 222",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 250,
+    "fields": {
+        "code": "7301005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 251,
+    "fields": {
+        "code": "7301020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 252,
+    "fields": {
+        "code": "7301208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 253,
+    "fields": {
+        "code": "7302004",
+        "description": "Barox BOOSTA",
+        "viscosity": "HLP 68",
+        "specification": "",
+        "approval": "DIN 51524-2, ISO 11158, ASTM D6158, JCMAS P041HK, AIST 126+127, SAE MS1004, GM LS2, SEB 181 222",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 254,
+    "fields": {
+        "code": "7302005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 255,
+    "fields": {
+        "code": "7302020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 256,
+    "fields": {
+        "code": "7302208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 257,
+    "fields": {
+        "code": "7306004",
+        "description": "Barox BOOSTA",
+        "viscosity": "HVLP 68",
+        "specification": "",
+        "approval": "DIN 51524-2, ISO 11158, ASTM D6158, JCMAS P041HK, AIST 126+127, SAE MS1004, GM LS2, SEB 181 222",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 258,
+    "fields": {
+        "code": "7306005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 259,
+    "fields": {
+        "code": "7306020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 260,
+    "fields": {
+        "code": "7306208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 261,
+    "fields": {
+        "code": "7304004",
+        "description": "Barox BOOSTA",
+        "viscosity": "HVLP 46",
+        "specification": "",
+        "approval": "DIN 51524-3, ISO 11158, ASTM D6158, JCMAS P041HK, AIST 126+127, SAE MS1004, GM LS2",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 262,
+    "fields": {
+        "code": "7304005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 263,
+    "fields": {
+        "code": "7304020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 264,
+    "fields": {
+        "code": "7304208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 265,
+    "fields": {
+        "code": "3142001",
+        "description": "Barox MOTA",
+        "viscosity": "10w40 API SL MA2",
+        "specification": "API SL, JASO MA2",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 266,
+    "fields": {
+        "code": "3142004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 267,
+    "fields": {
+        "code": "3142005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 268,
+    "fields": {
+        "code": "3142208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 269,
+    "fields": {
+        "code": "3143001",
+        "description": "Barox MOTA",
+        "viscosity": "15W40 API SL MA2",
+        "specification": "API SL JASO MA2",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 270,
+    "fields": {
+        "code": "3143004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 271,
+    "fields": {
+        "code": "3143005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 272,
+    "fields": {
+        "code": "3143020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 273,
+    "fields": {
+        "code": "3143208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 274,
+    "fields": {
+        "code": "3144001",
+        "description": "Barox MOTA",
+        "viscosity": "10W40 API SN MA2",
+        "specification": "API SN JASO MA2",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 275,
+    "fields": {
+        "code": "3144004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 276,
+    "fields": {
+        "code": "3144005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 277,
+    "fields": {
+        "code": "3144020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 278,
+    "fields": {
+        "code": "3144208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 279,
+    "fields": {
+        "code": "3145001",
+        "description": "Barox MOTA",
+        "viscosity": "20w50",
+        "specification": "API SN",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 280,
+    "fields": {
+        "code": "3145004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 281,
+    "fields": {
+        "code": "3145005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 282,
+    "fields": {
+        "code": "3145208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 283,
+    "fields": {
+        "code": "3141001",
+        "description": "Barox MOTA",
+        "viscosity": "20w50",
+        "specification": "API SL JASO MA2",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 284,
+    "fields": {
+        "code": "3141004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 285,
+    "fields": {
+        "code": "3141005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 286,
+    "fields": {
+        "code": "3141208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 287,
+    "fields": {
+        "code": "3140001",
+        "description": "Barox MOTA",
+        "viscosity": "API TC JASO FD 2T",
+        "specification": "JASO FD 2T",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 288,
+    "fields": {
+        "code": "3140004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 289,
+    "fields": {
+        "code": "3140005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 290,
+    "fields": {
+        "code": "3140208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 291,
+    "fields": {
+        "code": "5220001",
+        "description": "Barox INFINA",
+        "viscosity": "CVT",
+        "specification": "",
+        "approval": "Audi/VW, BMW, Daihatsu Ammix, Dodge/Chrysler/Jeep/Mopar, Ford, GM/Saturn, Honda HMMF, Hyundai/Kia, Mazda, MB, Mini Cooper, Mitsubishi, Nissan, Subaru Lineartronic, Suzuki, Toyota",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 292,
+    "fields": {
+        "code": "5220004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 293,
+    "fields": {
+        "code": "5220005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 294,
+    "fields": {
+        "code": "5220020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 295,
+    "fields": {
+        "code": "5220208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 296,
+    "fields": {
+        "code": "5200001",
+        "description": "Barox INFINA",
+        "viscosity": "ATF Dex VI",
+        "specification": "",
+        "approval": "GM Dexron VI",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 297,
+    "fields": {
+        "code": "5200004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 298,
+    "fields": {
+        "code": "5200005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 299,
+    "fields": {
+        "code": "5200020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 300,
+    "fields": {
+        "code": "5200208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 301,
+    "fields": {
+        "code": "5300001",
+        "description": "Barox INFINA",
+        "viscosity": "ATF Dex VI     ULV",
+        "specification": "ULV",
+        "approval": "GM Dexron VI                        10 speed",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 302,
+    "fields": {
+        "code": "5300004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 303,
+    "fields": {
+        "code": "5300005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 304,
+    "fields": {
+        "code": "5300020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 305,
+    "fields": {
+        "code": "5300208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 306,
+    "fields": {
+        "code": "5201001",
+        "description": "Barox INFINA",
+        "viscosity": "ATF Dex III H",
+        "specification": "",
+        "approval": "Dexron III-H, Mercon, MB 236.9/.1, MAN 339 Typ L-1/V-1/Z-1, Voith 55.6335.xx, ZF TE-ML 03D/04D/14A /17C/11B, Allison TES-389/C-4, Volvo 97341, Caterpillar TO-2, Renk Doromat",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 307,
+    "fields": {
+        "code": "5201004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 308,
+    "fields": {
+        "code": "5201005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 309,
+    "fields": {
+        "code": "5201020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 310,
+    "fields": {
+        "code": "5201208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 311,
+    "fields": {
+        "code": "5202001",
+        "description": "Barox INFINA",
+        "viscosity": "ATF Dex II D",
+        "specification": "",
+        "approval": "",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 312,
+    "fields": {
+        "code": "5202004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 313,
+    "fields": {
+        "code": "5202005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 314,
+    "fields": {
+        "code": "5202020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 315,
+    "fields": {
+        "code": "5202208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 316,
+    "fields": {
+        "code": "5330001",
+        "description": "Barox INFINA",
+        "viscosity": "ATF TASA (TYPE A,SUFFIX A)",
+        "specification": "",
+        "approval": "",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 317,
+    "fields": {
+        "code": "5330004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 318,
+    "fields": {
+        "code": "5330005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 319,
+    "fields": {
+        "code": "5330020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 320,
+    "fields": {
+        "code": "5330208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 321,
+    "fields": {
+        "code": "5205001",
+        "description": "Barox INFINA",
+        "viscosity": "MTF  SAE 75w80 GL4",
+        "specification": "API GL4",
+        "approval": "API GL4, BMW MTF LT-2/-3, Ford WSS M2C200-D2, GM 1940764/1940768, MB 235.10, PSA B71 2330, Land Rover special gear oil / MTF 94, Honda Special MTF/MTF II, Renault Tranself NFJ/TRJ/TRT/TRZ, Volvo 97308/97309, VW G xxx xxx",
+        "packaging": "12x1L",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 322,
+    "fields": {
+        "code": "5205004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 323,
+    "fields": {
+        "code": "5205005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 324,
+    "fields": {
+        "code": "5205020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 325,
+    "fields": {
+        "code": "5205208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 326,
+    "fields": {
+        "code": "5203001",
+        "description": "Barox INFINA",
+        "viscosity": "MTF  SAE 75w80 GL5",
+        "specification": "API GL5",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 327,
+    "fields": {
+        "code": "5203004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 328,
+    "fields": {
+        "code": "5203005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 329,
+    "fields": {
+        "code": "5203020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 330,
+    "fields": {
+        "code": "5203208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 331,
+    "fields": {
+        "code": "5206001",
+        "description": "Barox INFINA",
+        "viscosity": "MTF  SAE 80w90 GL5",
+        "specification": "API GL5",
+        "approval": "ZF TE-ML 16B/17B/19B /21A, MB 235.0, DAF, MIL-L-2105D, MAN 342 Typ M-1, Volvo 97310",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 332,
+    "fields": {
+        "code": "5206004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 333,
+    "fields": {
+        "code": "5206005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 334,
+    "fields": {
+        "code": "5206020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 335,
+    "fields": {
+        "code": "5206208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 336,
+    "fields": {
+        "code": "5204001",
+        "description": "Barox INFINA",
+        "viscosity": "MTF SAE 80W90 GL4",
+        "specification": "API GL4",
+        "approval": "ZF TE-ML 16A/17A/19A, MAN 341 Typ E-1/Z-2",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 337,
+    "fields": {
+        "code": "5204004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 338,
+    "fields": {
+        "code": "5204005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 339,
+    "fields": {
+        "code": "5204280",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 340,
+    "fields": {
+        "code": "5207001",
+        "description": "Barox INFINA",
+        "viscosity": "MTF SAE 80 GL 5",
+        "specification": "API GL5",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 341,
+    "fields": {
+        "code": "5207004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 342,
+    "fields": {
+        "code": "5207005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 343,
+    "fields": {
+        "code": "5207208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 344,
+    "fields": {
+        "code": "5208001",
+        "description": "Barox INFINA",
+        "viscosity": "MTF SAE 140 GL5",
+        "specification": "API GL5",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 345,
+    "fields": {
+        "code": "5208004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 346,
+    "fields": {
+        "code": "5208005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 347,
+    "fields": {
+        "code": "5208208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 348,
+    "fields": {
+        "code": "5213001",
+        "description": "Barox INFINA",
+        "viscosity": "MTF SAE 85W90 GL5",
+        "specification": "API GL5",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 349,
+    "fields": {
+        "code": "5213004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 350,
+    "fields": {
+        "code": "5213005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 351,
+    "fields": {
+        "code": "5213020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 352,
+    "fields": {
+        "code": "5213208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 353,
+    "fields": {
+        "code": "5214001",
+        "description": "Barox INFINA",
+        "viscosity": "MTF SAE 85W-140 GL4",
+        "specification": "API G4",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 354,
+    "fields": {
+        "code": "5214004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 355,
+    "fields": {
+        "code": "5214005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 356,
+    "fields": {
+        "code": "5214020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 357,
+    "fields": {
+        "code": "5214208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 358,
+    "fields": {
+        "code": "5209001",
+        "description": "Barox INFINA",
+        "viscosity": "MTF SAE 85W-140 GL5",
+        "specification": "API GL5",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 359,
+    "fields": {
+        "code": "5209004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 360,
+    "fields": {
+        "code": "5209005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 361,
+    "fields": {
+        "code": "5209020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 362,
+    "fields": {
+        "code": "5209208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 363,
+    "fields": {
+        "code": "5211001",
+        "description": "Barox INFINA",
+        "viscosity": "MTF SAE 90 GL5",
+        "specification": "API G5",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 364,
+    "fields": {
+        "code": "5211004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 365,
+    "fields": {
+        "code": "5211005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 366,
+    "fields": {
+        "code": "5211208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 367,
+    "fields": {
+        "code": "5215001",
+        "description": "Barox INFINA",
+        "viscosity": "MTF SAE 140 GL1",
+        "specification": "API G1",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 368,
+    "fields": {
+        "code": "5215004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 369,
+    "fields": {
+        "code": "5215005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 370,
+    "fields": {
+        "code": "5215020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 371,
+    "fields": {
+        "code": "5215208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 372,
+    "fields": {
+        "code": "8401020",
+        "description": "Barox Gear",
+        "viscosity": "VG 68",
+        "specification": "",
+        "approval": "DIN 51517-3, AIST 224, AGMA 9005 E02",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 373,
+    "fields": {
+        "code": "8401208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 374,
+    "fields": {
+        "code": "8402020",
+        "description": "Barox Gear",
+        "viscosity": "VG 100",
+        "specification": "",
+        "approval": "DIN 51517-3, AIST 224, AGMA 9005 E02",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 375,
+    "fields": {
+        "code": "8402208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 376,
+    "fields": {
+        "code": "8403020",
+        "description": "Barox Gear",
+        "viscosity": "VG 150",
+        "specification": "",
+        "approval": "DIN 51517-3, AIST 224, AGMA 9005 E02",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 377,
+    "fields": {
+        "code": "8403208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 378,
+    "fields": {
+        "code": "8405020",
+        "description": "Barox Gear",
+        "viscosity": "VG320",
+        "specification": "",
+        "approval": "DIN 51517-3, AIST 224, AGMA 9005 E02",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 379,
+    "fields": {
+        "code": "8405208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 380,
+    "fields": {
+        "code": "8407020",
+        "description": "Barox Gear",
+        "viscosity": "VG 460",
+        "specification": "",
+        "approval": "DIN 51517-3, AIST 224, AGMA 9005 E02",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 381,
+    "fields": {
+        "code": "8407208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 382,
+    "fields": {
+        "code": "8408020",
+        "description": "Transmission oil            OFF ROAD",
+        "viscosity": "TO-4,C4",
+        "specification": "",
+        "approval": "Transmission oil 10, TO-4,C4",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 383,
+    "fields": {
+        "code": "8408208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 384,
+    "fields": {
+        "code": "9701001",
+        "description": "Barox COOLA REVO",
+        "viscosity": "",
+        "specification": "",
+        "approval": "BS6580, SAE J1034, ASTM3306 und\n4985, PSA B715110",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 385,
+    "fields": {
+        "code": "9701004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 386,
+    "fields": {
+        "code": "9701005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 387,
+    "fields": {
+        "code": "9701020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 388,
+    "fields": {
+        "code": "9701208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 389,
+    "fields": {
+        "code": "9705001",
+        "description": "Barox COOLA REVO",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 390,
+    "fields": {
+        "code": "9705004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 391,
+    "fields": {
+        "code": "9705005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 392,
+    "fields": {
+        "code": "9705020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 393,
+    "fields": {
+        "code": "9705208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 394,
+    "fields": {
+        "code": "9706001",
+        "description": "Barox COOLA REVO",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "1Lx12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 395,
+    "fields": {
+        "code": "9706004",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x4L",
+        "liters_per_case": "16.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 396,
+    "fields": {
+        "code": "9706005",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "4x5L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 397,
+    "fields": {
+        "code": "9706020",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 398,
+    "fields": {
+        "code": "9706208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 399,
+    "fields": {
+        "code": "6290250",
+        "description": "BAROX TEMPRA",
+        "viscosity": "",
+        "specification": "",
+        "approval": "F.M.V.SS.NO.116",
+        "packaging": "250mlx24",
+        "liters_per_case": "6.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 400,
+    "fields": {
+        "code": "6290500",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "500mlx12",
+        "liters_per_case": "6.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 401,
+    "fields": {
+        "code": "6290001",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "1L x 12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 402,
+    "fields": {
+        "code": "6291250",
+        "description": "BAROX TEMPRA",
+        "viscosity": "",
+        "specification": "",
+        "approval": "F.M.V.SS.NO.116",
+        "packaging": "250mlx24",
+        "liters_per_case": "6.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 403,
+    "fields": {
+        "code": "6291500",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "500mlx12",
+        "liters_per_case": "6.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 404,
+    "fields": {
+        "code": "6291001",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "1L x 12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 405,
+    "fields": {
+        "code": "6292250",
+        "description": "BAROX TEMPRA",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "250mlx24",
+        "liters_per_case": "6.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 406,
+    "fields": {
+        "code": "6292500",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "500mlx12",
+        "liters_per_case": "6.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 407,
+    "fields": {
+        "code": "6292001",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "1L x 12",
+        "liters_per_case": "12.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 408,
+    "fields": {
+        "code": "2430020",
+        "description": "BAROX AGRA",
+        "viscosity": "",
+        "specification": "API GL 4/CG4",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 409,
+    "fields": {
+        "code": "2430208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 410,
+    "fields": {
+        "code": "2433020",
+        "description": "",
+        "viscosity": "",
+        "specification": "API GL 4/CG4",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 411,
+    "fields": {
+        "code": "2433208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 412,
+    "fields": {
+        "code": "2437020",
+        "description": "BAROX AGRA",
+        "viscosity": "",
+        "specification": "API GL 4/CG4",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 413,
+    "fields": {
+        "code": "2437208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 414,
+    "fields": {
+        "code": "2434020",
+        "description": "",
+        "viscosity": "",
+        "specification": "API GL 4/CG4",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 415,
+    "fields": {
+        "code": "2434208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 416,
+    "fields": {
+        "code": "2438020",
+        "description": "BAROX AGRA",
+        "viscosity": "",
+        "specification": "API GL 4/CG4",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 417,
+    "fields": {
+        "code": "2438208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 418,
+    "fields": {
+        "code": "2435020",
+        "description": "",
+        "viscosity": "",
+        "specification": "API GL 4/CG4",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 419,
+    "fields": {
+        "code": "2435208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 420,
+    "fields": {
+        "code": "2436020",
+        "description": "",
+        "viscosity": "",
+        "specification": "API GL 4/CG4",
+        "approval": "",
+        "packaging": "20L",
+        "liters_per_case": "20.00"
+    }
+},
+{
+    "model": "core.masterproduct",
+    "pk": 421,
+    "fields": {
+        "code": "2436208",
+        "description": "",
+        "viscosity": "",
+        "specification": "",
+        "approval": "",
+        "packaging": "208L",
+        "liters_per_case": "208.00"
+    }
+},
+{
+    "model": "core.product",
+    "pk": 4,
+    "fields": {
+        "master": 7,
+        "sku": "1182004",
+        "name": "",
+        "quantity": "0.00",
+        "production_price": "0.00",
+        "profit_percent": "0.00",
+        "selling_price": "0.00",
+        "updated_by": null,
+        "updated_at": "2026-06-11T15:52:23.623Z",
+        "effective_date": null
+    }
+},
+{
+    "model": "core.product",
+    "pk": 5,
+    "fields": {
+        "master": 8,
+        "sku": "1182005",
+        "name": "",
+        "quantity": "0.00",
+        "production_price": "1.55",
+        "profit_percent": "7.00",
+        "selling_price": "1.66",
+        "updated_by": null,
+        "updated_at": "2026-06-11T15:57:46.321Z",
+        "effective_date": null
+    }
+},
+{
+    "model": "core.product",
+    "pk": 6,
+    "fields": {
+        "master": 68,
+        "sku": "1104001",
+        "name": "Barox ULTRA",
+        "quantity": "0.00",
+        "production_price": "0.00",
+        "profit_percent": "0.00",
+        "selling_price": "0.00",
+        "updated_by": null,
+        "updated_at": "2026-06-14T06:27:02.845Z",
+        "effective_date": null
+    }
+},
+{
+    "model": "core.productchange",
+    "pk": 6,
+    "fields": {
+        "product": 5,
+        "changed_by": null,
+        "field_name": "production_price",
+        "old_value": "0.00",
+        "new_value": "1.55",
+        "created_at": "2026-06-11T15:57:46.330Z"
+    }
+},
+{
+    "model": "core.productchange",
+    "pk": 7,
+    "fields": {
+        "product": 5,
+        "changed_by": null,
+        "field_name": "profit_percent",
+        "old_value": "0.00",
+        "new_value": "7",
+        "created_at": "2026-06-11T15:57:46.338Z"
+    }
+},
+{
+    "model": "core.exportfile",
+    "pk": 1,
+    "fields": {
+        "file": "exports/pricing-export_zTUOTjX.xlsx",
+        "created_by": [
+            "Arshad al Haq"
+        ],
+        "created_at": "2026-06-08T19:15:18.416Z"
+    }
+},
+{
+    "model": "core.exportfile",
+    "pk": 2,
+    "fields": {
+        "file": "exports/pricing-export_bien4M2.xlsx",
+        "created_by": [
+            "Arshad al Haq"
+        ],
+        "created_at": "2026-06-08T19:25:23.655Z"
+    }
+},
+{
+    "model": "core.importfile",
+    "pk": 1,
+    "fields": {
+        "file": "imports/created-pricing-20260609-123407.xlsx",
+        "created_by": null,
+        "created_at": "2026-06-09T12:34:07.482Z",
+        "template_mode": false,
+        "processed": true,
+        "error_summary": {
+            "errors": [
+                {
+                    "row": "10W40",
+                    "errors": [
+                        "unsupported operand type(s) for /: 'float' and 'decimal.Decimal'"
+                    ]
+                }
+            ],
+            "applied": 0
+        }
+    }
+},
+{
+    "model": "core.quotation",
+    "pk": 1,
+    "fields": {
+        "product": 5,
+        "salesperson": [
+            "Arshad al Haq"
+        ],
+        "customer_name": "Sinopec",
+        "quantity": "20000.00",
+        "discount_percent": "4.00",
+        "final_price": "31872.00",
+        "created_at": "2026-06-12T09:31:25.463Z"
+    }
+},
+{
+    "model": "core.notification",
+    "pk": 1,
+    "fields": {
+        "sender": [
+            "Arshad al Haq"
+        ],
+        "recipient": null,
+        "message": "Can we add 5W40 Synthetic?",
+        "created_at": "2026-06-11T15:41:33.009Z",
+        "read_by": [
+            [
+                "Ahmed"
+            ]
+        ]
+    }
+},
+{
+    "model": "core.lead",
+    "pk": 1,
+    "fields": {
+        "salesperson": [
+            "Arshad al Haq"
+        ],
+        "contact_name": "John",
+        "opportunity_name": "VANOL",
+        "contact_email": "aasdfdfd@gmail.com",
+        "contact_phone": "1234567890",
+        "revenue": "400000.00",
+        "stage": "New",
+        "created_at": "2026-06-11T18:06:06.007Z",
+        "updated_at": "2026-06-13T14:42:33.119Z"
+    }
+}
+]

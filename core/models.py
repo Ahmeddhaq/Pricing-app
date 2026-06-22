@@ -6,10 +6,10 @@ from django.db import models
 
 class MasterProduct(models.Model):
     code = models.CharField(max_length=50, unique=True, verbose_name="Product Code")
-    description = models.CharField(max_length=200, verbose_name="Description")
+    description = models.CharField(max_length=500, verbose_name="Description")
     viscosity = models.CharField(max_length=100, blank=True, verbose_name="Viscosity")
-    specification = models.CharField(max_length=200, blank=True, verbose_name="Specification")
-    approval = models.CharField(max_length=200, blank=True, verbose_name="Approval")
+    specification = models.CharField(max_length=500, blank=True, verbose_name="Specification")
+    approval = models.CharField(max_length=500, blank=True, verbose_name="Approval")
     packaging = models.CharField(max_length=100, blank=True, verbose_name="Packaging")
     liters_per_case = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name="Liters per case")
 
