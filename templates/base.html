@@ -81,7 +81,10 @@
           </div>
           {% endif %}
         </div>
-      </header>    <script>
+      </header>
+      
+      {% if user.is_authenticated %}
+      <script>
         document.addEventListener("DOMContentLoaded", function() {
             const bellBtn = document.getElementById('bell-button');
             const dropdown = document.getElementById('notification-dropdown');
