@@ -112,9 +112,9 @@ def sales_dashboard(request):
         for mp in matching_masters:
             Product.objects.get_or_create(
                 sku=mp.code,
+                master=mp,
                 defaults={
                     'name': mp.description,
-                    'master': mp,
                     'production_price': Decimal("0.00"),
                     'profit_percent': Decimal("0.00"),
                     'quantity': Decimal("0.00"),
@@ -187,9 +187,9 @@ def production_dashboard(request):
         if mp:
             Product.objects.get_or_create(
                 sku=mp.code,
+                master=mp,
                 defaults={
                     'name': mp.description,
-                    'master': mp,
                     'production_price': Decimal("0.00"),
                     'profit_percent': Decimal("0.00"),
                     'quantity': Decimal("0.00"),
@@ -409,8 +409,8 @@ def products_list(request):
                 if code:
                     if not code.isdigit():
                         errors.append(f'Product code {code} for {pack} must contain only digits.')
-                    elif MasterProduct.objects.filter(code=code).exists():
-                        errors.append(f'Product with code {code} already exists.')
+                    elif MasterProduct.objects.filter(code=code, description=description, packaging=pack).exists():
+                        errors.append(f'Product with code {code}, name {description} and packaging {pack} already exists.')
                     else:
                         valid_codes.append((code, pack))
             
@@ -448,8 +448,8 @@ def products_list(request):
             if not errors:
                 try:
                     master = MasterProduct.objects.get(id=product_id)
-                    if master.code != code and MasterProduct.objects.filter(code=code).exists():
-                        errors.append(f'Product with code {code} already exists.')
+                    if (master.code != code or master.description != description or master.packaging != packaging) and MasterProduct.objects.filter(code=code, description=description, packaging=packaging).exists():
+                        errors.append(f'Product with code {code}, name {description} and packaging {packaging} already exists.')
                     else:
                         master.code = code
                         master.description = description
@@ -850,7 +850,7 @@ def import_apply(request, import_id):
             if not row["sku"]:
                 continue
             try:
-                prod = Product.objects.filter(sku=row["sku"]).first()
+                prod = Product.objects.filter(sku=row["sku"], name=row["name"]).first()
                 if prod:
                     prod.name = row["name"] or prod.name
                     prod.quantity = row["quantity"]
@@ -860,9 +860,11 @@ def import_apply(request, import_id):
                     prod.updated_by = actor
                     prod.save()
                 else:
+                    master = MasterProduct.objects.filter(code=row["sku"], description=row["name"]).first()
                     Product.objects.create(
                         sku=row["sku"],
                         name=row["name"] or row["sku"],
+                        master=master,
                         quantity=row["quantity"],
                         production_price=row["production_price"],
                         profit_percent=row["profit_percent"],

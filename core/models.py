@@ -5,7 +5,7 @@ from django.db import models
 
 
 class MasterProduct(models.Model):
-    code = models.CharField(max_length=50, unique=True, verbose_name="Product Code")
+    code = models.CharField(max_length=50, verbose_name="Product Code")
     description = models.CharField(max_length=500, verbose_name="Description")
     viscosity = models.CharField(max_length=100, blank=True, verbose_name="Viscosity")
     specification = models.CharField(max_length=500, blank=True, verbose_name="Specification")
@@ -23,7 +23,7 @@ class MasterProduct(models.Model):
 
 class Product(models.Model):
     master = models.ForeignKey(MasterProduct, on_delete=models.CASCADE, null=True, blank=True, related_name="pricing_records")
-    sku = models.CharField(max_length=50, unique=True)
+    sku = models.CharField(max_length=50)
     name = models.CharField(max_length=200)
     quantity = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     production_price = models.DecimalField(max_digits=12, decimal_places=2, default=0)
