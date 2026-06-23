@@ -14,4 +14,7 @@ python manage.py collectstatic --noinput
 # Run Django database migrations
 python manage.py migrate --noinput
 
+# Temporarily run database re-import for Render Free tier
+python reimport.py
+
 echo "Build completed!"
