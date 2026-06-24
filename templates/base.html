@@ -26,10 +26,14 @@
       <nav class="sidebar-nav">
         <a class="nav-link" href="/">Dashboard</a>
         {% if user.is_authenticated %}
+          {% if is_production or is_admin %}
             <a class="nav-link" href="/products/">Products</a>
             <a class="nav-link" href="/pricing/">Pricing</a>
+          {% endif %}
+          {% if is_sales or is_admin %}
             <a class="nav-link" href="/crm/">CRM</a>
-          {% if user.username == "Arshad al Haq" %}
+          {% endif %}
+          {% if is_admin %}
             <a class="nav-link" href="/invite/">Invite People</a>
           {% endif %}
         {% endif %}

@@ -20,11 +20,7 @@ from django.db.models import Q
 
 
 User = get_user_model()
-ADMIN_USERNAME = "Arshad al Haq"
-
-def is_admin(user):
-    return user.is_authenticated and user.username.lower() == ADMIN_USERNAME.lower()
-
+from .utils import ADMIN_USERNAME, is_admin, is_sales, is_production
 
 def record_changes(product, old_product, user):
     fields = ["sku", "name", "quantity", "production_price", "profit_percent"]
@@ -148,6 +144,8 @@ def sales_dashboard(request):
 
 @login_required
 def crm_dashboard(request):
+    if not is_sales(request.user):
+        return redirect('dashboard')
     leads = Lead.objects.filter(salesperson=request.user).order_by('-created_at')
     leads_by_stage = {
         'New': leads.filter(stage='New'),
@@ -161,6 +159,8 @@ def crm_dashboard(request):
 
 @login_required
 def create_quotation(request):
+    if not is_sales(request.user):
+        return redirect('dashboard')
     if request.method == "POST":
         product_id = request.POST.get("product_id")
         customer_name = request.POST.get("customer_name")
@@ -259,6 +259,8 @@ def production_dashboard(request):
 
 @login_required
 def history_view(request):
+    if not is_production(request.user):
+        return redirect('dashboard')
     query = (request.GET.get("q") or "").strip()
     date_value = (request.GET.get("date") or "").strip()
 
@@ -360,7 +362,10 @@ def invite_people(request):
     )
 
 
+@login_required
 def import_detail(request, import_id):
+    if not is_production(request.user):
+        return redirect('dashboard')
     imp = get_object_or_404(ImportFile, pk=import_id)
     fpath = imp.file.path
     with open(fpath, "rb") as fh:
@@ -371,9 +376,11 @@ def import_detail(request, import_id):
 
 @login_required
 def products_list(request):
+    if not is_production(request.user):
+        return redirect('dashboard')
     errors = []
     edit_id = None
-    can_edit = not is_admin(request.user)
+    can_edit = is_admin(request.user) or request.user.groups.filter(name='Production').exists()
     query = (request.GET.get('q') or '').strip()
 
     if request.method == 'POST' and can_edit:
@@ -496,10 +503,13 @@ def products_list(request):
 
 @login_required
 def pricing_list(request):
+    if not is_production(request.user):
+        return redirect('dashboard')
     errors = []
     edit_id = None
+    can_edit = is_admin(request.user) or request.user.groups.filter(name='Production').exists()
 
-    if request.method == 'POST':
+    if request.method == 'POST' and can_edit:
         action = request.POST.get('action')
         product_id = request.POST.get('product')
         packaging = request.POST.get('packaging') or ''
@@ -621,7 +631,8 @@ def pricing_list(request):
         'rows': rows, 
         'errors': errors, 
         'form': form_values,
-        'master_products': master_products
+        'master_products': master_products,
+        'can_edit': can_edit
     })
 
 @login_required
@@ -654,6 +665,8 @@ def product_edit(request, pk):
 
 @login_required
 def price_update(request, pk):
+    if not is_production(request.user):
+        return redirect('dashboard')
     product = get_object_or_404(Product, pk=pk)
     old_product = Product.objects.get(pk=pk)
     if request.user.is_staff:
@@ -671,6 +684,8 @@ def price_update(request, pk):
 
 @login_required
 def export_dashboard(request):
+    if not is_production(request.user):
+        return redirect('dashboard')
     wb = Workbook()
     ws = wb.active
     ws.title = "Pricing"
@@ -809,7 +824,10 @@ def validate_and_parse_rows(rows):
     return parsed, errors
 
 
+@login_required
 def import_upload(request):
+    if not is_production(request.user):
+        return redirect('dashboard')
     if request.method == "POST":
         form = ImportForm(request.POST, request.FILES)
         if form.is_valid():
@@ -836,7 +854,10 @@ def import_upload(request):
     return render(request, "import_form.html", {"form": form})
 
 
+@login_required
 def import_apply(request, import_id):
+    if not is_production(request.user):
+        return redirect('dashboard')
     # Allow anonymous application; updated_by set to None if anonymous
     imp = get_object_or_404(ImportFile, pk=import_id)
     fpath = imp.file.path
@@ -880,7 +901,10 @@ def import_apply(request, import_id):
     return redirect(reverse("dashboard"))
 
 
+@login_required
 def download_template(request):
+    if not is_production(request.user):
+        return redirect('dashboard')
     wb = Workbook()
     ws = wb.active
     ws.title = "Template"
@@ -892,6 +916,8 @@ def download_template(request):
 
 @login_required
 def crm_lead_create(request):
+    if not is_sales(request.user):
+        return redirect('dashboard')
     if request.method == 'POST':
         form = LeadForm(request.POST)
         if form.is_valid():
@@ -902,6 +928,8 @@ def crm_lead_create(request):
 
 @login_required
 def crm_lead_update(request, pk):
+    if not is_sales(request.user):
+        return redirect('dashboard')
     lead = get_object_or_404(Lead, pk=pk)
     if request.method == 'POST':
         new_stage = request.POST.get('stage')
@@ -913,6 +941,8 @@ def crm_lead_update(request, pk):
 
 @login_required
 def crm_lead_edit(request, pk):
+    if not is_sales(request.user):
+        return redirect('dashboard')
     lead = get_object_or_404(Lead, pk=pk)
     if request.method == 'POST':
         form = LeadForm(request.POST, instance=lead)
@@ -922,6 +952,8 @@ def crm_lead_edit(request, pk):
 
 @login_required
 def crm_lead_delete(request, pk):
+    if not is_sales(request.user):
+        return redirect('dashboard')
     lead = get_object_or_404(Lead, pk=pk)
     if request.method == 'POST':
         lead.delete()
@@ -929,6 +961,8 @@ def crm_lead_delete(request, pk):
 
 @login_required
 def generate_quotation_pdf(request, id):
+    if not is_sales(request.user):
+        return redirect('dashboard')
     quote = get_object_or_404(Quotation, id=id, salesperson=request.user)
     valid_until = quote.created_at + timezone.timedelta(days=30)
     context = {
@@ -940,6 +974,8 @@ def generate_quotation_pdf(request, id):
 
 @login_required
 def generate_proforma_pdf(request, id):
+    if not is_sales(request.user):
+        return redirect('dashboard')
     quote = get_object_or_404(Quotation, id=id, salesperson=request.user)
     context = {
         'quote': quote,
@@ -949,6 +985,8 @@ def generate_proforma_pdf(request, id):
 
 @login_required
 def generate_lead_quotation(request, pk):
+    if not is_sales(request.user):
+        return redirect('dashboard')
     lead = get_object_or_404(Lead, pk=pk, salesperson=request.user)
     valid_until = timezone.now() + timezone.timedelta(days=30)
     context = {
@@ -960,6 +998,8 @@ def generate_lead_quotation(request, pk):
 
 @login_required
 def generate_lead_proforma(request, pk):
+    if not is_sales(request.user):
+        return redirect('dashboard')
     lead = get_object_or_404(Lead, pk=pk, salesperson=request.user)
     context = {
         'lead': lead,

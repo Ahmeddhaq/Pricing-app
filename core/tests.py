@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.test import TestCase
 from django.urls import reverse
 
@@ -20,6 +20,10 @@ class ProductTests(TestCase):
 class ExportTests(TestCase):
     def test_export_creates_file_record(self):
         user = User.objects.create_user(username="user", password="pass")
+        # Add user to Production group to pass access check
+        group, _ = Group.objects.get_or_create(name="Production")
+        user.groups.add(group)
+
         Product.objects.create(
             sku="SKU-1",
             name="Engine Oil",
@@ -31,3 +35,57 @@ class ExportTests(TestCase):
         response = self.client.get(reverse("export_dashboard"))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(ExportFile.objects.count(), 1)
+
+
+class AccessControlTests(TestCase):
+    def setUp(self):
+        # Create Sales and Production groups
+        self.sales_group, _ = Group.objects.get_or_create(name="Sales")
+        self.prod_group, _ = Group.objects.get_or_create(name="Production")
+
+        # Create users
+        self.sales_user = User.objects.create_user(username="sales_member", password="pass")
+        self.sales_user.groups.add(self.sales_group)
+
+        self.prod_user = User.objects.create_user(username="prod_member", password="pass")
+        self.prod_user.groups.add(self.prod_group)
+
+        self.admin_user = User.objects.create_user(username="Arshad al Haq", password="pass")
+
+    def test_sales_user_access(self):
+        self.client.login(username="sales_member", password="pass")
+        
+        # Sales user should be able to access CRM dashboard
+        response = self.client.get(reverse("crm_dashboard"))
+        self.assertEqual(response.status_code, 200)
+
+        # Sales user should NOT be able to access products list
+        response = self.client.get(reverse("products_list"))
+        self.assertRedirects(response, reverse("dashboard"))
+
+        # Sales user should NOT be able to access pricing list
+        response = self.client.get(reverse("pricing_list"))
+        self.assertRedirects(response, reverse("dashboard"))
+
+    def test_production_user_access(self):
+        self.client.login(username="prod_member", password="pass")
+
+        # Production user should be able to access products list
+        response = self.client.get(reverse("products_list"))
+        self.assertEqual(response.status_code, 200)
+
+        # Production user should be able to access pricing list
+        response = self.client.get(reverse("pricing_list"))
+        self.assertEqual(response.status_code, 200)
+
+        # Production user should NOT be able to access CRM dashboard
+        response = self.client.get(reverse("crm_dashboard"))
+        self.assertRedirects(response, reverse("dashboard"))
+
+    def test_admin_user_access(self):
+        self.client.login(username="Arshad al Haq", password="pass")
+
+        # Admin user should be able to access everything
+        for url_name in ["crm_dashboard", "products_list", "pricing_list"]:
+            response = self.client.get(reverse(url_name))
+            self.assertEqual(response.status_code, 200)
