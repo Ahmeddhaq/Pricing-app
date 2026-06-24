@@ -26,8 +26,10 @@
       <nav class="sidebar-nav">
         <a class="nav-link" href="/">Dashboard</a>
         {% if user.is_authenticated %}
-          {% if is_production or is_admin %}
+          {% if is_production or is_admin or is_sales %}
             <a class="nav-link" href="/products/">Products</a>
+          {% endif %}
+          {% if is_production or is_admin %}
             <a class="nav-link" href="/pricing/">Pricing</a>
           {% endif %}
           {% if is_sales or is_admin %}

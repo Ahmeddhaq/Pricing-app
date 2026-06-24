@@ -376,8 +376,6 @@ def import_detail(request, import_id):
 
 @login_required
 def products_list(request):
-    if not is_production(request.user):
-        return redirect('dashboard')
     errors = []
     edit_id = None
     can_edit = is_admin(request.user) or request.user.groups.filter(name='Production').exists()

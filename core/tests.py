@@ -59,9 +59,10 @@ class AccessControlTests(TestCase):
         response = self.client.get(reverse("crm_dashboard"))
         self.assertEqual(response.status_code, 200)
 
-        # Sales user should NOT be able to access products list
+        # Sales user should be able to access products list (read-only)
         response = self.client.get(reverse("products_list"))
-        self.assertRedirects(response, reverse("dashboard"))
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(response.context['can_edit'])
 
         # Sales user should NOT be able to access pricing list
         response = self.client.get(reverse("pricing_list"))
