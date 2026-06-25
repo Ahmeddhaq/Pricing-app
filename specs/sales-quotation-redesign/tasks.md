@@ -1,0 +1,9 @@
+- [ ] Update `templates/quotation_document.html` layout structure:
+  - Add inline SVG Vanol logo matching the proforma invoice header
+  - Add metadata section (Date Issued, Document No., Validity) and CUSTOMER / SUPPLIER flex columns
+  - Structure 12-row items grid matching columns in spec (Sr., Description, Specification, Unit of Package, Qty, Unit Price, Total Amount)
+  - Add Terms and Conditions table + Totals calculation block at the bottom
+  - Add Page 2 section with Bank Details block
+- [ ] Add `@media print` layout and page-break styling rules in `templates/quotation_document.html`
+- [ ] Implement calculation and number-to-words JavaScript engine in `templates/quotation_document.html`
+- [ ] Manual verification: run local server, open quotation/lead document generator, verify layout, test calculations, and print preview formatting

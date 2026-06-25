@@ -1,0 +1,9 @@
+- [ ] Update `templates/proforma_invoice_document.html` layout structure:
+  - Add inline SVG Vanol logo
+  - Add metadata section, INVOICE TO / SHIP TO flex columns
+  - Structure 12-row items grid matching columns in spec (S.No., No, Description, UOM/Type, Qty, Unit Price, VAT%, VAT(USD), Amount)
+  - Add Terms & Conditions table + Totals calculation block at the bottom
+  - Add Page 2 section with Bank Details block
+- [ ] Add `@media print` layout and page-break styling rules in `templates/proforma_invoice_document.html`
+- [ ] Implement calculation and number-to-words JavaScript engine in `templates/proforma_invoice_document.html`
+- [ ] Manual verification: run local server, open quotation/lead document generator, verify layout, test calculations, and print preview formatting

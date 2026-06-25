@@ -5,135 +5,836 @@
     <title>Sales Quotation</title>
     <style>
         @page { size: A4; margin: 0; }
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; margin: 0; padding: 20px; font-size: 14px; background: #f5f5f5; }
-        .document-container { width: 210mm; min-height: 297mm; margin: 0 auto; padding: 20mm; border: 1px solid #ddd; background: #fff; box-sizing: border-box; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; border-bottom: 2px solid #f0a23a; padding-bottom: 20px; }
-        .company-info h1 { margin: 0 0 5px 0; color: #172e4e; font-size: 20px; }
-        .company-info p { margin: 0; color: #555; }
-        .document-title { text-align: right; }
-        .document-title h2 { margin: 0; font-size: 24px; color: #172e4e; text-transform: uppercase; }
-        .document-title p { margin: 5px 0 0 0; font-weight: bold; }
-        .info-section { display: flex; justify-content: space-between; margin-bottom: 30px; }
-        .info-block { width: 45%; }
-        .info-block h3 { margin: 0 0 10px 0; font-size: 14px; text-transform: uppercase; color: #888; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .info-block p { margin: 0 0 5px 0; }
-        .items-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
-        .items-table th { background-color: #f9f9f9; padding: 12px; text-align: left; font-weight: bold; border-bottom: 2px solid #ddd; }
-        .items-table td { padding: 12px; border-bottom: 1px solid #eee; }
-        .items-table .text-right { text-align: right; }
-        .totals-section { display: flex; justify-content: flex-end; margin-bottom: 40px; }
-        .totals-table { width: 40%; border-collapse: collapse; }
-        .totals-table td { padding: 8px 12px; border-bottom: 1px solid #eee; }
-        .totals-table tr:last-child td { border-bottom: none; font-weight: bold; font-size: 16px; border-top: 2px solid #ddd; }
-        .footer { text-align: center; color: #888; font-size: 12px; border-top: 1px solid #eee; padding-top: 20px; margin-top: 40px; }
-        [contenteditable="true"] { padding: 2px; min-width: 20px; border-radius: 3px; }
-        span[contenteditable="true"], strong[contenteditable="true"] { display: inline-block; }
-        [contenteditable="true"]:hover { background: #fafafa; outline: 1px dashed #ccc; cursor: text; }
-        [contenteditable="true"]:focus { background: #fff; outline: 1px solid #f0a23a; }
+        body { 
+            font-family: Arial, sans-serif; 
+            color: #000; 
+            margin: 0; 
+            padding: 0; 
+            font-size: 11.5px; 
+            background: #f5f5f5; 
+            line-height: 1.35;
+        }
+        .document-container { 
+            width: 210mm; 
+            margin: 0 auto; 
+            box-sizing: border-box; 
+        }
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 12mm 15mm;
+            background: #fff;
+            box-sizing: border-box;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .page-break {
+            display: block;
+            page-break-after: always;
+            break-after: page;
+        }
+        .header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            margin-bottom: 15px; 
+        }
+        .supplier-info {
+            width: 55%;
+        }
+        .supplier-info h3 {
+            margin: 0 0 4px 0;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .supplier-info p {
+            margin: 0 0 2px 0;
+        }
+        .doc-title-meta {
+            width: 40%;
+            text-align: right;
+        }
+        .doc-title-meta h1 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        .meta-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+        .meta-table td {
+            padding: 3px 0;
+            text-align: left;
+            border: none;
+        }
+        .meta-table td.label {
+            width: 40%;
+            font-weight: normal;
+        }
+        .meta-table td.value {
+            width: 60%;
+            text-align: right;
+            padding-right: 5px;
+        }
+        .circ-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        .circ-block {
+            width: 49%;
+            border: 1px solid #000;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .circ-block h3 {
+            margin: 0 0 6px 0;
+            font-size: 12px;
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+            padding-bottom: 3px;
+        }
+        .circ-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .circ-table td {
+            padding: 2px 0;
+            vertical-align: top;
+        }
+        .circ-table td.label {
+            width: 35%;
+            font-weight: normal;
+        }
+        .circ-table td.value {
+            width: 65%;
+            font-weight: bold;
+        }
+        .items-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-bottom: 15px; 
+            table-layout: fixed;
+        }
+        .items-table th, .items-table td { 
+            border: 1px solid #000; 
+            padding: 5px 6px; 
+            text-align: center;
+            word-wrap: break-word;
+        }
+        .items-table th { 
+            font-weight: bold; 
+            background: #f2f2f2;
+            font-size: 11px;
+        }
+        .items-table td.left {
+            text-align: left;
+        }
+        .items-table td.right {
+            text-align: right;
+        }
+        .bottom-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        .terms-block {
+            width: 50%;
+        }
+        .terms-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #000;
+        }
+        .terms-table th {
+            background: #f2f2f2;
+            text-align: left;
+            padding: 5px 8px;
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+        }
+        .terms-table td {
+            padding: 4px 8px;
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #000;
+        }
+        .terms-table td:last-child {
+            border-right: none;
+        }
+        .terms-table tr:last-child td {
+            border-bottom: none;
+        }
+        .terms-table td.label {
+            width: 40%;
+            font-weight: bold;
+        }
+        .terms-table td.value {
+            width: 60%;
+        }
+        .totals-block {
+            width: 45%;
+        }
+        .totals-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #000;
+        }
+        .totals-table td {
+            padding: 5px 8px;
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+        }
+        .totals-table td:last-child {
+            border-right: none;
+        }
+        .totals-table tr:last-child td {
+            border-bottom: none;
+        }
+        .totals-table td.label {
+            width: 65%;
+            font-weight: bold;
+            text-align: right;
+        }
+        .totals-table td.value {
+            width: 35%;
+            text-align: right;
+            font-weight: bold;
+        }
+        .words-box {
+            width: 100%;
+            border: 1px solid #000;
+            padding: 6px 8px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+        .generated-note {
+            font-size: 10.5px;
+            color: #000;
+            margin-bottom: 25px;
+        }
+        .page-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #ccc;
+            padding-top: 5px;
+            font-size: 10px;
+        }
+        .bank-section {
+            border: 1px solid #000;
+            padding: 15px;
+            margin-top: 10px;
+        }
+        .bank-section h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .bank-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .bank-table td {
+            padding: 4px 0;
+            font-size: 12px;
+        }
+        .bank-table td.label {
+            width: 25%;
+            font-weight: bold;
+        }
+        .bank-table td.value {
+            width: 75%;
+        }
+        [contenteditable="true"] { 
+            padding: 1px 3px; 
+            outline: none; 
+            border-radius: 2px;
+            transition: background 0.15s;
+        }
+        [contenteditable="true"]:hover { 
+            background: #f0f4f8; 
+        }
+        [contenteditable="true"]:focus { 
+            background: #fff; 
+            box-shadow: 0 0 0.5px 1.5px #13472b;
+        }
         @media print {
-            body { background: none; padding: 0; }
-            .document-container { border: none; padding: 20mm; margin: 0; width: 210mm; min-height: 297mm; box-shadow: none; }
-            .no-print { display: none; }
-            [contenteditable="true"] { outline: none !important; background: transparent !important; }
+            body { 
+                background: none; 
+                padding: 0; 
+            }
+            .page { 
+                border: none; 
+                box-shadow: none; 
+                margin: 0; 
+                page-break-after: always;
+                break-after: page;
+            }
+            .no-print { 
+                display: none; 
+            }
         }
     </style>
 </head>
 <body>
-    <div class="no-print" style="text-align: right; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
-        <button onclick="window.print()" style="padding: 10px 20px; background: #f0a23a; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Print / Save PDF</button>
+    <div class="no-print" style="text-align: right; margin: 15px auto; width: 210mm;">
+        <button onclick="window.print()" style="padding: 8px 18px; background: #13472b; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.15);">Print / Save PDF</button>
     </div>
+    
     <div class="document-container">
-        <div class="header">
-            <div class="company-info">
-                <h1>Lubricant Pricing Studio</h1>
-                <h2>Supplier:</h2>
-                <h2 contenteditable="true">VANOL FZE</h2>
-                <p contenteditable="true">Plot S40805</p>
-                <p contenteditable="true">Jebel Ali Free Zone South</p>
-                <p contenteditable="true">Dubai, United Arab Emirates</p>
-                <p contenteditable="true">Phone No: +971 4 123 4567</p>
-                <p contenteditable="true">contact@vanol.com</p>
+        
+        <!-- PAGE 1 -->
+        <div class="page">
+            <div class="header">
+                <div class="supplier-info">
+                    <!-- Inline Vector SVG of Vanol Logo -->
+                    <div style="margin-bottom: 10px;">
+                        <svg width="160" height="60" viewBox="0 0 180 70">
+                            <rect x="2" y="2" width="176" height="66" rx="33" ry="33" fill="#13472b" stroke="#ffffff" stroke-width="2"/>
+                            <rect x="5" y="5" width="170" height="60" rx="30" ry="30" fill="none" stroke="#dc3545" stroke-width="1.5"/>
+                            <text x="90" y="20" font-family="Arial, sans-serif" font-size="8" font-weight="bold" font-style="italic" fill="#ffffff" text-anchor="middle">THE QUALITY LEADS!</text>
+                            <text x="90" y="50" font-family="'Brush Script MT', cursive, Georgia, serif" font-size="34" font-weight="bold" fill="#dc3545" stroke="#ffffff" stroke-width="1.2" text-anchor="middle" font-style="italic">Vanol</text>
+                            <g fill="#ffffff" transform="translate(68, 55)">
+                                <polygon points="4,0 5.2,2.8 8,2.8 5.6,4.4 6.4,7.2 4,5.6 1.6,7.2 2.4,4.4 0,2.8 2.8,2.8" transform="translate(0,0) scale(0.6)"/>
+                                <polygon points="4,0 5.2,2.8 8,2.8 5.6,4.4 6.4,7.2 4,5.6 1.6,7.2 2.4,4.4 0,2.8 2.8,2.8" transform="translate(10,0) scale(0.6)"/>
+                                <polygon points="4,0 5.2,2.8 8,2.8 5.6,4.4 6.4,7.2 4,5.6 1.6,7.2 2.4,4.4 0,2.8 2.8,2.8" transform="translate(20,0) scale(0.6)"/>
+                                <polygon points="4,0 5.2,2.8 8,2.8 5.6,4.4 6.4,7.2 4,5.6 1.6,7.2 2.4,4.4 0,2.8 2.8,2.8" transform="translate(30,0) scale(0.6)"/>
+                                <polygon points="4,0 5.2,2.8 8,2.8 5.6,4.4 6.4,7.2 4,5.6 1.6,7.2 2.4,4.4 0,2.8 2.8,2.8" transform="translate(40,0) scale(0.6)"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3>Supplier:</h3>
+                    <p style="font-weight: bold;" contenteditable="true">VANOL FZE</p>
+                    <p contenteditable="true">Plot S40805, Plot No.: S40805,</p>
+                    <p contenteditable="true">Jebel Ali Free Zone South</p>
+                    <p contenteditable="true">Dubai, 40805, United Arab Emirates.</p>
+                    <p>Phone No: <span contenteditable="true">+971 4 250 9992</span></p>
+                    <p>Email: <span contenteditable="true">danica@vanol.com</span></p>
+                </div>
+                
+                <div class="doc-title-meta">
+                    <h1>SALES QUOTATION</h1>
+                    <table class="meta-table">
+                        <tr>
+                            <td class="label">Date Issued:</td>
+                            <td class="value" contenteditable="true">{{ date|default:"13/05/2026" }}</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Document No:</td>
+                            <td class="value" style="font-weight: bold;" contenteditable="true">VASO-0000{{ quote.id|default:lead.pk|default:"440" }}</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Validity:</td>
+                            <td class="value" contenteditable="true">{{ valid_until|default:"17/05/2026" }}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="document-title">
-                <h2>Sales Quotation</h2>
-                <p>Date: <span contenteditable="true">{{ date|default:"" }}</span></p>
-                <p>Valid Until: <span contenteditable="true">{{ valid_until|default:"" }}</span></p>
-                <p>Quote #: <span contenteditable="true">{{ quote.id|default:lead.pk|default:"" }}</span></p>
+            
+            <div class="circ-section">
+                <div class="circ-block">
+                    <h3>CUSTOMER:</h3>
+                    <table class="circ-table">
+                        <tr>
+                            <td class="label">Company Name:</td>
+                            <td class="value" contenteditable="true">{{ quote.customer_name|default:lead.opportunity_name|default:"Bahwan Motors" }}</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Address:</td>
+                            <td class="value" contenteditable="true">{% if lead or quote %}{{ quote.customer_name|default:lead.opportunity_name }} Address details...{% else %}Bahwan Motors, Al Qouz, Industria area-4, PO Box 124800, Dubai, UAE{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Contact Name:</td>
+                            <td class="value" contenteditable="true">{{ lead.contact_name|default:"Mr.Himanshu Khurana" }}</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Contact Number:</td>
+                            <td class="value" contenteditable="true">{{ lead.contact_phone|default:"" }}</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Email:</td>
+                            <td class="value" contenteditable="true">{{ lead.contact_email|default:"" }}</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="circ-block">
+                    <h3>SUPPLIER:</h3>
+                    <table class="circ-table">
+                        <tr>
+                            <td class="label">Company Name:</td>
+                            <td class="value" contenteditable="true">BAROX GmbH (Vanol FZE)</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Address:</td>
+                            <td class="value" contenteditable="true">S40805 Jebel Ali Freezone South 4, Dubai, United Arab Emirates</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Contact Name:</td>
+                            <td class="value" contenteditable="true">Danica Sandra Aguilar</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Contact Number:</td>
+                            <td class="value" contenteditable="true">+971 4 250 9992</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Email:</td>
+                            <td class="value" contenteditable="true">danica@vanol.com</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </div>
-
-        <div class="info-section">
-            <div class="info-block">
-                <h3>Quotation To:</h3>
-                <p><strong contenteditable="true">{{ quote.customer_name|default:lead.contact_name|default:"" }}</strong></p>
-                <p contenteditable="true">{{ lead.contact_email|default:"" }}</p>
-                <p contenteditable="true">{{ lead.contact_phone|default:"" }}</p>
-            </div>
-        </div>
-
-        <table class="items-table">
-            <thead>
-                <tr>
-                    <th>Item / Description</th>
-                    <th class="text-right">Quantity</th>
-                    <th class="text-right">Unit Price</th>
-                    <th class="text-right">Discount</th>
-                    <th class="text-right">Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% if quote %}
-                <tr>
-                    <td contenteditable="true">
-                        <strong contenteditable="true">{{ quote.product.sku }}</strong><br>
-                        {{ quote.product.name }}
-                    </td>
-                    <td class="text-right" contenteditable="true">{{ quote.quantity }}</td>
-                    <td class="text-right" contenteditable="true">${{ quote.product.selling_price }}</td>
-                    <td class="text-right" contenteditable="true">{{ quote.discount_percent }}%</td>
-                    <td class="text-right" contenteditable="true">${{ quote.final_price }}</td>
-                </tr>
-                {% elif lead %}
-                <tr>
-                    <td contenteditable="true">
-                        <strong contenteditable="true">{{ lead.opportunity_name|default:"" }}</strong><br>
-                        Custom Lubricant Solution
-                    </td>
-                    <td class="text-right" contenteditable="true">1</td>
-                    <td class="text-right" contenteditable="true">${{ lead.revenue }}</td>
-                    <td class="text-right" contenteditable="true">0%</td>
-                    <td class="text-right" contenteditable="true">${{ lead.revenue }}</td>
-                </tr>
-                {% endif %}
-                <tr>
-                    <td contenteditable="true"></td>
-                    <td class="text-right" contenteditable="true"></td>
-                    <td class="text-right" contenteditable="true"></td>
-                    <td class="text-right" contenteditable="true"></td>
-                    <td class="text-right" contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td contenteditable="true"></td>
-                    <td class="text-right" contenteditable="true"></td>
-                    <td class="text-right" contenteditable="true"></td>
-                    <td class="text-right" contenteditable="true"></td>
-                    <td class="text-right" contenteditable="true"></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="totals-section">
-            <table class="totals-table">
-                <tr>
-                    <td>Total Amount:</td>
-                    <td class="text-right" contenteditable="true">${% if quote %}{{ quote.final_price }}{% elif lead %}{{ lead.revenue }}{% endif %}</td>
-                </tr>
+            
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">Sr.</th>
+                        <th style="width: 35%;">Description</th>
+                        <th style="width: 15%;">Specification</th>
+                        <th style="width: 15%;">Unit of Package</th>
+                        <th style="width: 10%;">Quantity</th>
+                        <th style="width: 10%;">Unit Price (USD)</th>
+                        <th style="width: 10%;">Total Amount (USD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Row 1: Autofilled with target details -->
+                    <tr>
+                        <td>1</td>
+                        <td class="left" contenteditable="true">
+                            {% if quote %}{{ quote.product.name }}
+                            {% elif lead %}{{ lead.opportunity_name }} Custom Lubricant
+                            {% else %}BAROX 15w40 CI4{% endif %}
+                        </td>
+                        <td contenteditable="true">
+                            {% if quote %}{{ quote.product.master.specification|default:quote.product.master.viscosity }}
+                            {% else %}API CI4{% endif %}
+                        </td>
+                        <td contenteditable="true">
+                            {% if quote %}
+                                {% if quote.product.master.packaging == '12x1' %}12 x 1L Carton
+                                {% elif quote.product.master.packaging == '4x4' %}4 x 4L Carton
+                                {% elif quote.product.master.packaging == '4x5' %}4 x 5L Carton
+                                {% elif quote.product.master.packaging == '20' %}20L Jerry Can
+                                {% elif quote.product.master.packaging == '208' %}208L Drum
+                                {% else %}{{ quote.product.master.packaging }}{% endif %}
+                            {% else %}
+                                208L
+                            {% endif %}
+                        </td>
+                        <td class="qty" contenteditable="true">{% if quote %}{{ quote.quantity|floatformat:0 }}{% elif lead %}1{% else %}40{% endif %}</td>
+                        <td class="price" contenteditable="true">{% if quote %}{{ quote.product.selling_price }}{% elif lead %}{{ lead.revenue }}{% else %}476.00{% endif %}</td>
+                        <td class="amount right">{% if quote %}{{ quote.final_price }}{% elif lead %}{{ lead.revenue }}{% else %}19,040.00{% endif %}</td>
+                    </tr>
+                    
+                    <!-- Row 2 -->
+                    <tr>
+                        <td>2</td>
+                        <td class="left" contenteditable="true">{% if not quote and not lead %}BAROX Hydraulic Oil HLP 68{% endif %}</td>
+                        <td contenteditable="true">{% if not quote and not lead %}HLP 68{% endif %}</td>
+                        <td contenteditable="true">{% if not quote and not lead %}208L{% endif %}</td>
+                        <td class="qty" contenteditable="true">{% if not quote and not lead %}40{% endif %}</td>
+                        <td class="price" contenteditable="true">{% if not quote and not lead %}315.00{% endif %}</td>
+                        <td class="amount right">{% if not quote and not lead %}12,600.00{% else %}0.00{% endif %}</td>
+                    </tr>
+                    
+                    <!-- Row 3 -->
+                    <tr>
+                        <td>3</td>
+                        <td class="left" contenteditable="true">{% if not quote and not lead %}BAROX Hydraulic Oil HLP 46{% endif %}</td>
+                        <td contenteditable="true">{% if not quote and not lead %}HLP 46{% endif %}</td>
+                        <td contenteditable="true">{% if not quote and not lead %}208L{% endif %}</td>
+                        <td class="qty" contenteditable="true">{% if not quote and not lead %}40{% endif %}</td>
+                        <td class="price" contenteditable="true">{% if not quote and not lead %}313.10{% endif %}</td>
+                        <td class="amount right">{% if not quote and not lead %}12,524.00{% else %}0.00{% endif %}</td>
+                    </tr>
+                    
+                    <!-- Row 4 -->
+                    <tr>
+                        <td>4</td>
+                        <td class="left" contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td class="qty" contenteditable="true"></td>
+                        <td class="price" contenteditable="true"></td>
+                        <td class="amount right">0.00</td>
+                    </tr>
+                    
+                    <!-- Row 5 -->
+                    <tr>
+                        <td>5</td>
+                        <td class="left" contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td class="qty" contenteditable="true"></td>
+                        <td class="price" contenteditable="true"></td>
+                        <td class="amount right">0.00</td>
+                    </tr>
+                    
+                    <!-- Row 6 -->
+                    <tr>
+                        <td>6</td>
+                        <td class="left" contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td class="qty" contenteditable="true"></td>
+                        <td class="price" contenteditable="true"></td>
+                        <td class="amount right">0.00</td>
+                    </tr>
+                    
+                    <!-- Row 7 -->
+                    <tr>
+                        <td>7</td>
+                        <td class="left" contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td class="qty" contenteditable="true"></td>
+                        <td class="price" contenteditable="true"></td>
+                        <td class="amount right">0.00</td>
+                    </tr>
+                    
+                    <!-- Row 8 -->
+                    <tr>
+                        <td>8</td>
+                        <td class="left" contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td class="qty" contenteditable="true"></td>
+                        <td class="price" contenteditable="true"></td>
+                        <td class="amount right">0.00</td>
+                    </tr>
+                    
+                    <!-- Row 9 -->
+                    <tr>
+                        <td>9</td>
+                        <td class="left" contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td class="qty" contenteditable="true"></td>
+                        <td class="price" contenteditable="true"></td>
+                        <td class="amount right">0.00</td>
+                    </tr>
+                    
+                    <!-- Row 10 -->
+                    <tr>
+                        <td>10</td>
+                        <td class="left" contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td class="qty" contenteditable="true"></td>
+                        <td class="price" contenteditable="true"></td>
+                        <td class="amount right">0.00</td>
+                    </tr>
+                    
+                    <!-- Row 11 -->
+                    <tr>
+                        <td>11</td>
+                        <td class="left" contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td class="qty" contenteditable="true"></td>
+                        <td class="price" contenteditable="true"></td>
+                        <td class="amount right">0.00</td>
+                    </tr>
+                    
+                    <!-- Row 12 -->
+                    <tr>
+                        <td>12</td>
+                        <td class="left" contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td class="qty" contenteditable="true"></td>
+                        <td class="price" contenteditable="true"></td>
+                        <td class="amount right">0.00</td>
+                    </tr>
+                </tbody>
             </table>
+            
+            <div class="bottom-section">
+                <div class="terms-block">
+                    <table class="terms-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Terms and Conditions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="label">Payment Terms</td>
+                                <td class="value" contenteditable="true">50% at the time of order and rest before dispatching</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Price</td>
+                                <td class="value" contenteditable="true">Price is based on above agreed volume</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Delivery Terms</td>
+                                <td class="value" contenteditable="true">EXWorks</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Port Of Destination</td>
+                                <td class="value" contenteditable="true">Jebel Ali</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Port Of Loading</td>
+                                <td class="value" contenteditable="true">VANOL WAREHOUSE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="totals-block">
+                    <table class="totals-table">
+                        <tbody>
+                            <tr>
+                                <td class="label">Total EX Factory Amount in USD.</td>
+                                <td class="value" id="sub-total">{% if quote %}{{ quote.final_price }}{% elif lead %}{{ lead.revenue }}{% else %}44,164.00{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Logistics Cost 40FT</td>
+                                <td class="value" id="logistics-charges" contenteditable="true">0.00</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Total Amount in USD</td>
+                                <td class="value" id="total-amount" style="font-size: 12.5px; color: #13472b;">{% if quote %}{{ quote.final_price }}{% elif lead %}{{ lead.revenue }}{% else %}44,164.00{% endif %}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="words-box" id="amount-in-words">
+                Total Amount In Words USD : USD Forty Four Thousand One Hundred Sixty Four and 00/100 only
+            </div>
+            
+            <div class="generated-note">
+                This is a system generated document No signature required
+            </div>
+            
+            <div class="page-footer">
+                <div>Issued by- <span contenteditable="true">{{ quote.salesperson.username|default:lead.salesperson.username|default:"Danica Sandra Aguilar" }}</span></div>
+                <div style="font-weight: bold;">1 of 2</div>
+                <div class="print-date">Printed on 5/21/2026 4:58:29 PM +00:00</div>
+            </div>
         </div>
-
-        <div class="footer">
-            <p>Thank you for your business. To accept this quotation, sign here and return: _________________________________</p>
+        
+        <div class="page-break"></div>
+        
+        <!-- PAGE 2 -->
+        <div class="page">
+            <div class="header">
+                <div class="supplier-info">
+                    <div style="margin-bottom: 10px;">
+                        <svg width="160" height="60" viewBox="0 0 180 70">
+                            <rect x="2" y="2" width="176" height="66" rx="33" ry="33" fill="#13472b" stroke="#ffffff" stroke-width="2"/>
+                            <rect x="5" y="5" width="170" height="60" rx="30" ry="30" fill="none" stroke="#dc3545" stroke-width="1.5"/>
+                            <text x="90" y="20" font-family="Arial, sans-serif" font-size="8" font-weight="bold" font-style="italic" fill="#ffffff" text-anchor="middle">THE QUALITY LEADS!</text>
+                            <text x="90" y="50" font-family="'Brush Script MT', cursive, Georgia, serif" font-size="34" font-weight="bold" fill="#dc3545" stroke="#ffffff" stroke-width="1.2" text-anchor="middle" font-style="italic">Vanol</text>
+                            <g fill="#ffffff" transform="translate(68, 55)">
+                                <polygon points="4,0 5.2,2.8 8,2.8 5.6,4.4 6.4,7.2 4,5.6 1.6,7.2 2.4,4.4 0,2.8 2.8,2.8" transform="translate(0,0) scale(0.6)"/>
+                                <polygon points="4,0 5.2,2.8 8,2.8 5.6,4.4 6.4,7.2 4,5.6 1.6,7.2 2.4,4.4 0,2.8 2.8,2.8" transform="translate(10,0) scale(0.6)"/>
+                                <polygon points="4,0 5.2,2.8 8,2.8 5.6,4.4 6.4,7.2 4,5.6 1.6,7.2 2.4,4.4 0,2.8 2.8,2.8" transform="translate(20,0) scale(0.6)"/>
+                                <polygon points="4,0 5.2,2.8 8,2.8 5.6,4.4 6.4,7.2 4,5.6 1.6,7.2 2.4,4.4 0,2.8 2.8,2.8" transform="translate(30,0) scale(0.6)"/>
+                                <polygon points="4,0 5.2,2.8 8,2.8 5.6,4.4 6.4,7.2 4,5.6 1.6,7.2 2.4,4.4 0,2.8 2.8,2.8" transform="translate(40,0) scale(0.6)"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="doc-title-meta">
+                    <h1>SALES QUOTATION</h1>
+                </div>
+            </div>
+            
+            <div class="bank-section">
+                <h3>VANOL FZE (USD Bank Account Details)</h3>
+                <table class="bank-table">
+                    <tbody>
+                        <tr>
+                            <td class="label">Bank Name:</td>
+                            <td class="value" contenteditable="true">ADCB</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Account Holder Name:</td>
+                            <td class="value" contenteditable="true">VANOL FZE</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Account Number:</td>
+                            <td class="value" contenteditable="true">120227119992005</td>
+                        </tr>
+                        <tr>
+                            <td class="label">IBAN:</td>
+                            <td class="value" contenteditable="true">AE2900300120227119992005</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Swift code:</td>
+                            <td class="value" contenteditable="true">ADCBAEAXXX</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="page-footer">
+                <div>Issued by- <span contenteditable="true">{{ quote.salesperson.username|default:lead.salesperson.username|default:"Danica Sandra Aguilar" }}</span></div>
+                <div style="font-weight: bold;">2 of 2</div>
+                <div class="print-date">Printed on 5/21/2026 4:58:29 PM +00:00</div>
+            </div>
         </div>
+        
     </div>
+
+    <!-- Live Calculation and Number to Words Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.document-container');
+            
+            // Set Print Date and Time dynamically
+            const now = new Date();
+            const formatTimezone = (date) => {
+                let tzOffset = -date.getTimezoneOffset();
+                let diff = tzOffset >= 0 ? '+' : '-';
+                let pad = (num) => String(Math.floor(Math.abs(num))).padStart(2, '0');
+                return diff + pad(tzOffset / 60) + ':' + pad(tzOffset % 60);
+            };
+            const formattedDate = now.toLocaleDateString('en-US') + ' ' + 
+                                  now.toLocaleTimeString('en-US') + ' GMT' + formatTimezone(now);
+            
+            document.querySelectorAll('.print-date').forEach(el => {
+                el.innerText = 'Printed on ' + formattedDate;
+            });
+
+            // Conversion helper: Number to English words
+            function numberToEnglish(num) {
+                if (num === 0) return 'Zero';
+                
+                let parts = String(num.toFixed(2)).split('.');
+                let integerPart = parseInt(parts[0], 10);
+                let cents = parseInt(parts[1], 10);
+                
+                let words = integerToWords(integerPart);
+                
+                if (cents > 0) {
+                    words += ' and ' + String(cents).padStart(2, '0') + '/100';
+                } else {
+                    words += ' and 00/100';
+                }
+                
+                return words;
+            }
+            
+            function integerToWords(num) {
+                if (num === 0) return 'Zero';
+                
+                const a = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+                const b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+                
+                function helper(n) {
+                    let str = '';
+                    if (n >= 1000000) {
+                        str += helper(Math.floor(n / 1000000)) + ' Million ';
+                        n %= 1000000;
+                    }
+                    if (n >= 1000) {
+                        str += helper(Math.floor(n / 1000)) + ' Thousand ';
+                        n %= 1000;
+                    }
+                    if (n >= 100) {
+                        str += a[Math.floor(n / 100)] + ' Hundred ';
+                        n %= 100;
+                    }
+                    if (n >= 20) {
+                        str += b[Math.floor(n / 10)] + ' ';
+                        n %= 10;
+                    }
+                    if (n > 0) {
+                        str += a[n] + ' ';
+                    }
+                    return str.trim();
+                }
+                
+                return helper(num);
+            }
+
+            // Calculation engine
+            function recalculateTotals() {
+                let rows = document.querySelectorAll('.items-table tbody tr');
+                let subTotal = 0;
+
+                rows.forEach(row => {
+                    const qtyEl = row.querySelector('.qty');
+                    const priceEl = row.querySelector('.price');
+                    const amountEl = row.querySelector('.amount');
+
+                    if (qtyEl && priceEl) {
+                        let qtyRaw = qtyEl.innerText.replace(/,/g, '').trim();
+                        let priceRaw = priceEl.innerText.replace(/,/g, '').replace(/\$/g, '').trim();
+                        
+                        if (qtyRaw === '' && priceRaw === '') {
+                            // Empty placeholder row
+                            if (amountEl) amountEl.innerText = '0.00';
+                            return;
+                        }
+
+                        let qty = parseFloat(qtyRaw) || 0;
+                        let price = parseFloat(priceRaw) || 0;
+                        let baseAmount = qty * price;
+
+                        if (amountEl) {
+                            amountEl.innerText = baseAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                        }
+
+                        subTotal += baseAmount;
+                    }
+                });
+
+                // Update subtotal
+                const subTotalEl = document.getElementById('sub-total');
+                if (subTotalEl) {
+                    subTotalEl.innerText = subTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                }
+
+                // Logistics
+                const logisticsEl = document.getElementById('logistics-charges');
+                let logistics = 0;
+                if (logisticsEl) {
+                    logistics = parseFloat(logisticsEl.innerText.replace(/,/g, '').replace(/\$/g, '')) || 0;
+                }
+
+                // Update total amount
+                const finalTotal = subTotal + logistics;
+                const totalAmountEl = document.getElementById('total-amount');
+                if (totalAmountEl) {
+                    totalAmountEl.innerText = finalTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                }
+
+                // Update amount in words
+                const wordsEl = document.getElementById('amount-in-words');
+                if (wordsEl) {
+                    wordsEl.innerText = 'Total Amount In Words USD : USD ' + numberToEnglish(finalTotal) + ' only';
+                }
+            }
+
+            // Bind input event to recalculate values dynamically
+            container.addEventListener('input', (e) => {
+                if (e.target.classList.contains('qty') || 
+                    e.target.classList.contains('price') || 
+                    e.target.id === 'logistics-charges') {
+                    recalculateTotals();
+                }
+            });
+
+            // Initial calculation on load
+            recalculateTotals();
+        });
+    </script>
 </body>
 </html>
