@@ -21,4 +21,4 @@ class ImportForm(forms.Form):
 class LeadForm(forms.ModelForm):
     class Meta:
         model = Lead
-        fields = ["contact_name", "opportunity_name", "contact_email", "contact_phone", "revenue", "stage"]
+        fields = ["contact_name", "opportunity_name", "contact_email", "contact_phone", "revenue", "stage", "product", "quantity"]

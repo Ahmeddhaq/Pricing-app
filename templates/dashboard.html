@@ -20,7 +20,7 @@
   </div>
   
   <form method="GET" action="{% url 'dashboard' %}" class="search-form" style="margin-bottom: 1.5rem;">
-    <select name="q" style="flex: 1; margin-top: 0; height: 50px; padding: 0 1rem; border-radius: 8px; border: 1px solid var(--line); font-family: inherit; font-size: 1rem; background-color: var(--card-bg); color: var(--text);">
+    <select name="q" style="flex: 1; margin-top: 0; height: 50px; padding: 0 1rem; border-radius: 8px; border: 1px solid var(--line); font-family: inherit; font-size: 1rem; background-color: var(--surface); color: var(--text);">
       <option value="">Select a product to update cost...</option>
       {% for mp in master_products %}
         <option value="{{ mp.code }}" {% if query == mp.code %}selected{% endif %}>{{ mp.code }} - {{ mp.description }}</option>

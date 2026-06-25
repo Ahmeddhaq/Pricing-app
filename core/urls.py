@@ -21,4 +21,5 @@ urlpatterns = [
     path("crm/lead/<int:pk>/update/", views.crm_lead_update, name="crm_lead_update"),
     path("crm/lead/<int:pk>/edit/", views.crm_lead_edit, name="crm_lead_edit"),
     path("crm/lead/<int:pk>/delete/", views.crm_lead_delete, name="crm_lead_delete"),
+    path("crm/analytics/", views.crm_analytics, name="crm_analytics"),
 ]

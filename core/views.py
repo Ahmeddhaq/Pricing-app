@@ -8,15 +8,17 @@ from django.core.files.base import ContentFile
 from django.http import FileResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.db import models, transaction
+from django.db.models import Q, Sum, Avg, Count
 
 from .forms import ImportForm, PriceUpdateForm, ProductForm, LeadForm
 from .models import ExportFile, ImportFile, MasterProduct, Product, ProductChange, Quotation, Pricing, Notification, Lead
 import csv
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 from datetime import datetime
 from decimal import Decimal
 from django.utils import timezone
 from django.urls import reverse
-from django.db.models import Q
 
 
 User = get_user_model()
@@ -144,15 +146,17 @@ def sales_dashboard(request):
 def crm_dashboard(request):
     if not is_sales(request.user):
         return redirect('dashboard')
-    leads = Lead.objects.filter(salesperson=request.user).order_by('-created_at')
+    leads = Lead.objects.filter(salesperson=request.user).order_by('-created_at').select_related('product')
     leads_by_stage = {
         'New': leads.filter(stage='New'),
         'Qualified': leads.filter(stage='Qualified'),
         'Proposition': leads.filter(stage='Proposition'),
         'Won': leads.filter(stage='Won'),
     }
+    products = Product.objects.all().order_by('sku')
     return render(request, "crm_dashboard.html", {
         "leads_by_stage": leads_by_stage,
+        "products": products,
     })
 
 @login_required
@@ -966,3 +970,165 @@ def generate_lead_proforma(request, pk):
         'date': timezone.now().strftime('%B %d, %Y'),
     }
     return render(request, 'proforma_invoice_document.html', context)
+
+@login_required
+def crm_analytics(request):
+    if not is_sales(request.user):
+        return redirect('dashboard')
+
+    now = timezone.now()
+    
+    # 1. Monthly revenue lines calculations
+    months_12 = []
+    year = now.year
+    month = now.month
+    for i in range(12):
+        m = month - i
+        y = year
+        while m <= 0:
+            m += 12
+            y -= 1
+        months_12.append((y, m))
+    months_12.reverse()
+
+    monthly_revenue = []
+    for y, m in months_12:
+        total = Lead.objects.filter(
+            stage='Won',
+            won_at__year=y,
+            won_at__month=m
+        ).aggregate(total=Sum('revenue'))['total'] or Decimal('0.00')
+        
+        month_name = datetime(y, m, 1).strftime('%b %Y')
+        monthly_revenue.append({
+            'month': month_name,
+            'revenue': float(total)
+        })
+
+    # 2. Win rate by sales reps
+    sales_users = User.objects.filter(
+        groups__name='Sales'
+    ).distinct() | User.objects.filter(is_superuser=True).distinct()
+    sales_users = list(set(sales_users))
+
+    win_rates = []
+    for u in sales_users:
+        total_assigned = Lead.objects.filter(salesperson=u).count()
+        if total_assigned > 0:
+            total_won = Lead.objects.filter(salesperson=u, stage='Won').count()
+            rate = (total_won / total_assigned) * 100
+            full_name = f"{u.first_name} {u.last_name}".strip() or u.username
+            win_rates.append({
+                'name': full_name,
+                'win_rate': round(rate, 2)
+            })
+
+    # 3. Top 10 products sold pie chart values
+    leads_products = Lead.objects.filter(
+        stage='Won',
+        product__isnull=False
+    ).values('product__sku', 'product__name').annotate(
+        total_qty=Sum('quantity')
+    )
+    
+    quotations_products = Quotation.objects.all().values('product__sku', 'product__name').annotate(
+        total_qty=Sum('quantity')
+    )
+
+    product_totals = {}
+    for item in leads_products:
+        sku = item['product__sku']
+        name = item['product__name']
+        qty = float(item['total_qty'] or 0)
+        key = f"{sku} - {name}"
+        product_totals[key] = product_totals.get(key, 0) + qty
+
+    for item in quotations_products:
+        sku = item['product__sku']
+        name = item['product__name']
+        qty = float(item['total_qty'] or 0)
+        key = f"{sku} - {name}"
+        product_totals[key] = product_totals.get(key, 0) + qty
+
+    sorted_products = sorted(product_totals.items(), key=lambda x: x[1], reverse=True)[:10]
+    top_products_data = [{'product': k, 'quantity': v} for k, v in sorted_products]
+
+    # 4. Lead conversion funnel counts and drop-offs
+    new_count = Lead.objects.filter(stage='New').count()
+    qualified_count = Lead.objects.filter(stage='Qualified').count()
+    proposition_count = Lead.objects.filter(stage='Proposition').count()
+    won_count = Lead.objects.filter(stage='Won').count()
+
+    dropoffs = {}
+    if new_count > 0:
+        dropoffs['New_to_Qualified'] = round(((new_count - qualified_count) / new_count) * 100, 1)
+    else:
+        dropoffs['New_to_Qualified'] = 0.0
+
+    if qualified_count > 0:
+        dropoffs['Qualified_to_Proposition'] = round(((qualified_count - proposition_count) / qualified_count) * 100, 1)
+    else:
+        dropoffs['Qualified_to_Proposition'] = 0.0
+
+    if proposition_count > 0:
+        dropoffs['Proposition_to_Won'] = round(((proposition_count - won_count) / proposition_count) * 100, 1)
+    else:
+        dropoffs['Proposition_to_Won'] = 0.0
+
+    funnel_data = {
+        'New': new_count,
+        'Qualified': qualified_count,
+        'Proposition': proposition_count,
+        'Won': won_count,
+        'dropoffs': dropoffs
+    }
+
+    # 5. Average deal size trend (Last 6 months)
+    months_6 = months_12[-6:]
+    avg_deal_data = []
+    for y, m in months_6:
+        avg_size = Lead.objects.filter(
+            stage='Won',
+            won_at__year=y,
+            won_at__month=m
+        ).aggregate(avg_val=Avg('revenue'))['avg_val'] or Decimal('0.00')
+        
+        month_name = datetime(y, m, 1).strftime('%b %Y')
+        avg_deal_data.append({
+            'month': month_name,
+            'avg_deal_size': float(avg_size)
+        })
+
+    # 6. Stale leads calculation
+    thirty_days_ago = now - timezone.timedelta(days=30)
+    stale_leads_count = Lead.objects.exclude(
+        stage__in=['Won', 'Lost']
+    ).filter(
+        updated_at__lt=thirty_days_ago
+    ).count()
+
+    # Top KPI counts
+    total_pipeline = Lead.objects.exclude(stage__in=['Won', 'Lost']).aggregate(total=Sum('revenue'))['total'] or Decimal('0.00')
+    global_total = Lead.objects.count()
+    global_won = Lead.objects.filter(stage='Won').count()
+    global_win_rate = (global_won / global_total * 100) if global_total > 0 else 0.0
+
+    context_data = {
+        'monthly_revenue': monthly_revenue,
+        'win_rates': win_rates,
+        'top_products': top_products_data,
+        'funnel': funnel_data,
+        'deal_sizes': avg_deal_data,
+        'stale_leads_count': stale_leads_count,
+        'total_pipeline_value': float(total_pipeline),
+        'global_win_rate': round(global_win_rate, 2),
+    }
+
+    context_json = json.dumps(context_data, cls=DjangoJSONEncoder)
+
+    return render(request, "crm_analytics.html", {
+        "analytics_data_json": context_json,
+        "stale_leads_count": stale_leads_count,
+        "total_pipeline_value": total_pipeline,
+        "global_win_rate": global_win_rate,
+    })

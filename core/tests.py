@@ -2,7 +2,7 @@ from django.contrib.auth.models import User, Group
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import ExportFile, Product
+from .models import ExportFile, Product, Lead
 
 
 class ProductTests(TestCase):
@@ -55,9 +55,10 @@ class AccessControlTests(TestCase):
     def test_sales_user_access(self):
         self.client.login(username="sales_member", password="pass")
         
-        # Sales user should be able to access CRM dashboard
-        response = self.client.get(reverse("crm_dashboard"))
-        self.assertEqual(response.status_code, 200)
+        # Sales user should be able to access CRM dashboard and CRM Analytics
+        for url_name in ["crm_dashboard", "crm_analytics"]:
+            response = self.client.get(reverse(url_name))
+            self.assertEqual(response.status_code, 200)
 
         # Sales user should be able to access products list (read-only)
         response = self.client.get(reverse("products_list"))
@@ -79,14 +80,74 @@ class AccessControlTests(TestCase):
         response = self.client.get(reverse("pricing_list"))
         self.assertEqual(response.status_code, 200)
 
-        # Production user should NOT be able to access CRM dashboard
-        response = self.client.get(reverse("crm_dashboard"))
-        self.assertRedirects(response, reverse("dashboard"))
+        # Production user should NOT be able to access CRM dashboard or CRM Analytics
+        for url_name in ["crm_dashboard", "crm_analytics"]:
+            response = self.client.get(reverse(url_name))
+            self.assertRedirects(response, reverse("dashboard"))
 
     def test_admin_user_access(self):
         self.client.login(username="Arshad al Haq", password="pass")
 
         # Admin user should be able to access everything
-        for url_name in ["crm_dashboard", "products_list", "pricing_list"]:
+        for url_name in ["crm_dashboard", "crm_analytics", "products_list", "pricing_list"]:
             response = self.client.get(reverse(url_name))
             self.assertEqual(response.status_code, 200)
+
+
+import json
+
+class AnalyticsTests(TestCase):
+    def setUp(self):
+        self.sales_group, _ = Group.objects.get_or_create(name="Sales")
+        self.sales_user = User.objects.create_user(username="rep1", password="pass")
+        self.sales_user.groups.add(self.sales_group)
+        
+        # Create a product
+        self.product = Product.objects.create(
+            sku="SKU-TEST",
+            name="Testing Product",
+            quantity=10,
+            production_price=10,
+            profit_percent=20
+        )
+        
+        # Create won lead
+        self.won_lead = Lead.objects.create(
+            salesperson=self.sales_user,
+            contact_name="Client Won",
+            opportunity_name="Opp Won",
+            revenue=5000,
+            stage="Won",
+            product=self.product,
+            quantity=50
+        )
+        
+        # Create qualified lead (open)
+        self.open_lead = Lead.objects.create(
+            salesperson=self.sales_user,
+            contact_name="Client Open",
+            opportunity_name="Opp Open",
+            revenue=3000,
+            stage="Qualified"
+        )
+        
+    def test_analytics_kpis_and_json(self):
+        self.client.login(username="rep1", password="pass")
+        response = self.client.get(reverse("crm_analytics"))
+        self.assertEqual(response.status_code, 200)
+        
+        # Verify context data values
+        self.assertEqual(float(response.context['total_pipeline_value']), 3000.0)
+        self.assertEqual(float(response.context['global_win_rate']), 50.0)
+        self.assertEqual(response.context['stale_leads_count'], 0)
+        
+        # Check JSON payload structure
+        data = json.loads(response.context['analytics_data_json'])
+        self.assertEqual(data['stale_leads_count'], 0)
+        self.assertEqual(len(data['top_products']), 1)
+        self.assertEqual(data['top_products'][0]['product'], "SKU-TEST - Testing Product")
+        self.assertEqual(data['top_products'][0]['quantity'], 50.0)
+        
+        self.assertEqual(data['funnel']['New'], 0)
+        self.assertEqual(data['funnel']['Qualified'], 1)
+        self.assertEqual(data['funnel']['Won'], 1)

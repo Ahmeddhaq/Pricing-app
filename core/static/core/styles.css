@@ -16,6 +16,8 @@
   /* Typography */
   --text: #171717;
   --muted: #737373;
+  --text-secondary: var(--muted);
+  --text-main: var(--text);
 
   /* Status Colors */
   --status-success: #10b981;
@@ -162,9 +164,12 @@ a {
 }
 
 .nav-link.active {
-  background: var(--accent-soft);
+  background: transparent;
   color: var(--accent-strong);
   font-weight: 700;
+  border-left: 3px solid var(--accent);
+  border-radius: 0;
+  padding-left: 11px;
 }
 
 .sidebar-footer {
@@ -189,19 +194,6 @@ a {
   position: relative;
   padding: 32px;
   background: var(--bg);
-}
-
-.ambient-a {
-  top: 32px;
-  right: 8%;
-  background: radial-gradient(circle, rgba(241, 180, 76, 0.9), transparent 65%);
-}
-
-.ambient-b {
-  bottom: -90px;
-  left: 20%;
-  background: radial-gradient(circle, rgba(75, 123, 255, 0.8), transparent 65%);
-  animation-delay: -3s;
 }
 
 .hero-card, .panel-card, .auth-panel {

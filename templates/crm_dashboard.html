@@ -89,16 +89,16 @@
 
 /* Color Coding for Column Headers */
 .kanban-column[data-stage="New"] h3 {
-  border-bottom-color: #3b82f6;
+  border-bottom-color: var(--accent);
 }
 .kanban-column[data-stage="Qualified"] h3 {
-  border-bottom-color: #e5a93b;
+  border-bottom-color: var(--status-warning);
 }
 .kanban-column[data-stage="Proposition"] h3 {
-  border-bottom-color: #8b5cf6;
+  border-bottom-color: var(--accent-strong);
 }
 .kanban-column[data-stage="Won"] h3 {
-  border-bottom-color: #10b981;
+  border-bottom-color: var(--status-success);
 }
 
 .kanban-cards {
@@ -481,6 +481,8 @@
              data-contact-phone="{{ lead.contact_phone|default_if_none:'' }}"
              data-revenue="{{ lead.revenue }}"
              data-stage="{{ lead.stage }}"
+             data-product-id="{{ lead.product.id|default:'' }}"
+             data-quantity="{{ lead.quantity|default:'0' }}"
              data-search-term="{{ lead.opportunity_name|lower }} {{ lead.contact_name|lower }} {{ lead.contact_email|default_if_none:''|lower }} {{ lead.contact_phone|default_if_none:''|lower }}">
           
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem;">
@@ -519,6 +521,9 @@
             <span>👤 {{ lead.contact_name }}</span>
             {% if lead.contact_email %}<span>✉️ {{ lead.contact_email }}</span>{% endif %}
             {% if lead.contact_phone %}<span>📞 {{ lead.contact_phone }}</span>{% endif %}
+            {% if lead.product %}
+              <span style="margin-top: 0.25rem; font-weight: 600; color: var(--text);">📦 {{ lead.product.sku }} ({{ lead.quantity|floatformat:0 }} units)</span>
+            {% endif %}
           </div>
           
           <div class="revenue-tag">
@@ -563,6 +568,19 @@
         <input type="text" name="contact_phone" class="crm-form-input" placeholder="e.g. +971 50 123 4567">
       </div>
       <div class="crm-form-group">
+        <label>Linked Product</label>
+        <select name="product" class="crm-form-input">
+          <option value="">-- No Linked Product --</option>
+          {% for prod in products %}
+            <option value="{{ prod.id }}">{{ prod.sku }} - {{ prod.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="crm-form-group">
+        <label>Quantity</label>
+        <input type="number" step="0.01" name="quantity" class="crm-form-input" placeholder="e.g. 100">
+      </div>
+      <div class="crm-form-group">
         <label>Revenue (AED)</label>
         <input type="number" step="0.01" name="revenue" required class="crm-form-input" placeholder="e.g. 50000.00">
       </div>
@@ -591,6 +609,19 @@
       <div class="crm-form-group">
         <label>Contact Name</label>
         <input type="text" name="contact_name" id="edit_contact_name" required class="crm-form-input">
+      </div>
+      <div class="crm-form-group">
+        <label>Linked Product</label>
+        <select name="product" id="edit_product" class="crm-form-input">
+          <option value="">-- No Linked Product --</option>
+          {% for prod in products %}
+            <option value="{{ prod.id }}">{{ prod.sku }} - {{ prod.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="crm-form-group">
+        <label>Quantity</label>
+        <input type="number" step="0.01" name="quantity" id="edit_quantity" class="crm-form-input">
       </div>
       <div class="crm-form-group">
         <label>Revenue (AED)</label>
@@ -627,6 +658,8 @@ function openEditModal(id) {
     document.getElementById('edit_contact_email').value = card.dataset.contactEmail;
     document.getElementById('edit_contact_phone').value = card.dataset.contactPhone;
     document.getElementById('edit_stage').value = card.dataset.stage;
+    document.getElementById('edit_product').value = card.dataset.productId || "";
+    document.getElementById('edit_quantity').value = card.dataset.quantity || 0;
     document.getElementById('edit-lead-form').action = '/crm/lead/' + id + '/edit/';
     document.getElementById('edit-lead-modal').style.display = 'flex';
 }

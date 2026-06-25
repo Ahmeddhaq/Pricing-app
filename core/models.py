@@ -2,6 +2,7 @@ from decimal import Decimal
 
 from django.conf import settings
 from django.db import models
+from django.utils import timezone
 
 
 class MasterProduct(models.Model):
@@ -145,6 +146,19 @@ class Lead(models.Model):
     stage = models.CharField(max_length=20, choices=STAGE_CHOICES, default='New')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    # New Fields for Analytics
+    product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, blank=True, related_name="leads")
+    quantity = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    won_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.opportunity_name} - {self.contact_name}"
+
+    def save(self, *args, **kwargs):
+        if self.stage == 'Won':
+            if not self.won_at:
+                self.won_at = timezone.now()
+        else:
+            self.won_at = None
+        super().save(*args, **kwargs)

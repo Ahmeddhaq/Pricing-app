@@ -35,7 +35,7 @@
 
     <p>
       <label for="id_role">Role</label>
-      <select id="id_role" name="role" required style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(162, 179, 211, 0.16); background: rgba(255, 255, 255, 0.98); color: inherit;">
+      <select id="id_role" name="role" required style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); color: inherit;">
         <option value="sales">Sales</option>
         <option value="production">Production</option>
       </select>
@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <textarea id="invite-text" rows="8" readonly style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(162, 179, 211, 0.16); background: rgba(255, 255, 255, 0.98); color: inherit; resize: vertical;">{{ invite_text }}</textarea>
+  <textarea id="invite-text" rows="8" readonly style="width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface-strong); color: inherit; resize: vertical;">{{ invite_text }}</textarea>
 
   <div class="form-actions" style="margin-top: 12px;">
     <button class="primary-button" type="button" onclick="navigator.clipboard.writeText(document.getElementById('invite-text').value)">Copy Invite Text</button>

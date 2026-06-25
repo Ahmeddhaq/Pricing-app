@@ -1,0 +1,18 @@
+- [ ] Database Schema & Forms Updates:
+  - Add `product`, `quantity`, and `won_at` to `Lead` in `core/models.py`
+  - Implement auto-population of `won_at` on `Lead.save()`
+  - Add `product` and `quantity` to `LeadForm` in `core/forms.py`
+  - Generate and execute migrations (`makemigrations` and `migrate`)
+- [ ] Enhance CRM Dashboard Modals:
+  - Update `crm_dashboard` view in `core/views.py` to pass `products` list
+  - Add `product` and `quantity` form inputs to Add and Edit Lead modals in `templates/crm_dashboard.html`
+  - Update JavaScript card parsing to dynamically bind product/quantity variables on edit
+- [ ] Create CRM Analytics Backend View:
+  - Write `crm_analytics` view calculations in `core/views.py`
+  - Register `/crm/analytics/` URL pattern in `core/urls.py`
+- [ ] Build Analytics Dashboard Template:
+  - Create `templates/crm_analytics.html` with responsive metric grid, alerts, and 5 Chart.js panels
+  - Add CRM Analytics navigation link in `templates/base.html`
+- [ ] Verification:
+  - Create and run test cases in `core/tests.py`
+  - Perform visual manual check of charts and metrics in browser
