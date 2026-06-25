@@ -1,0 +1,10 @@
+- [ ] Add `db_index=True` to `MasterProduct.code` and `Product.sku` in `core/models.py`
+- [ ] Run database migrations (`makemigrations` and `migrate`) to apply the index modifications
+- [ ] Remove unused `products = Product.objects.all().order_by('sku')` from `sales_dashboard` view in `core/views.py`
+- [ ] Delete `templates/product_form.html`
+- [ ] Remove views `product_create`, `product_edit`, and `price_update` from `core/views.py`
+- [ ] Remove `product_create`, `product_edit`, and `price_update` URL paths from `core/urls.py`
+- [ ] Update incorrect comment on `import_apply` in `core/views.py`
+- [ ] Harden security configurations (password validators, allowed hosts, secret key fallback, session/cookie keys) in `pricing_app/settings.py`
+- [ ] Update Django package requirements in `requirements.txt`
+- [ ] Run automated tests to verify correct operation and no regressions

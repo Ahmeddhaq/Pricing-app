@@ -131,7 +131,6 @@ def sales_dashboard(request):
     recent_updates = ProductChange.objects.select_related("product").filter(field_name__in=['production_price', 'profit_percent', 'selling_price']).order_by('-created_at')[:5]
 
     master_products = MasterProduct.objects.all().order_by('code')
-    products = Product.objects.all().order_by('sku')
 
     return render(request, "sales_dashboard.html", {
         "query": query,
@@ -139,7 +138,6 @@ def sales_dashboard(request):
         "recent_quotations": recent_quotations,
         "recent_updates": recent_updates,
         "master_products": master_products,
-        "products": products,
     })
 
 @login_required
@@ -634,53 +632,6 @@ def pricing_list(request):
     })
 
 @login_required
-@user_passes_test(is_admin)
-def product_create(request):
-    form = ProductForm(request.POST or None)
-    if request.method == "POST" and form.is_valid():
-        product = form.save(commit=False)
-        product.updated_by = request.user
-        product.save()
-        ProductChange.objects.create(product=product, changed_by=request.user, field_name="created", old_value="", new_value=product.sku)
-        return redirect("dashboard")
-    return render(request, "product_form.html", {"form": form})
-
-
-@login_required
-@user_passes_test(is_admin)
-def product_edit(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    old_product = Product.objects.get(pk=pk)
-    form = ProductForm(request.POST or None, instance=product)
-    if request.method == "POST" and form.is_valid():
-        product = form.save(commit=False)
-        product.updated_by = request.user
-        record_changes(product, old_product, request.user)
-        product.save()
-        return redirect("dashboard")
-    return render(request, "product_form.html", {"form": form})
-
-
-@login_required
-def price_update(request, pk):
-    if not is_production(request.user):
-        return redirect('dashboard')
-    product = get_object_or_404(Product, pk=pk)
-    old_product = Product.objects.get(pk=pk)
-    if request.user.is_staff:
-        form = ProductForm(request.POST or None, instance=product)
-    else:
-        form = PriceUpdateForm(request.POST or None, instance=product)
-    if request.method == "POST" and form.is_valid():
-        product = form.save(commit=False)
-        product.updated_by = request.user
-        record_changes(product, old_product, request.user)
-        product.save()
-        return redirect("dashboard")
-    return render(request, "product_form.html", {"form": form})
-
-
-@login_required
 def export_dashboard(request):
     if not is_production(request.user):
         return redirect('dashboard')
@@ -856,7 +807,7 @@ def import_upload(request):
 def import_apply(request, import_id):
     if not is_production(request.user):
         return redirect('dashboard')
-    # Allow anonymous application; updated_by set to None if anonymous
+    # Requires Production role; sets updated_by to the active user
     imp = get_object_or_404(ImportFile, pk=import_id)
     fpath = imp.file.path
     with open(fpath, "rb") as fh:
