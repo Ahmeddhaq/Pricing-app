@@ -9,7 +9,7 @@
     </div>
   </div>
   <form method="GET" action="{% url 'dashboard' %}" class="form-grid search-form" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
-    <input list="master_products_list" name="q" value="{{ query }}" placeholder="Type to search and select a product..." style="flex: 1; margin-top: 0; height: 50px; padding: 0 1rem; border-radius: 8px; border: 1px solid var(--line); font-family: inherit; font-size: 1rem; background-color: var(--card-bg); color: var(--text);" autocomplete="off">
+    <input list="master_products_list" name="q" value="{{ query }}" placeholder="Type to search and select a product..." style="flex: 1; margin-top: 0;" autocomplete="off">
     <datalist id="master_products_list">
       {% for mp in master_products %}
         <option value="{{ mp.code }}">{{ mp.code }} - {{ mp.description }}</option>

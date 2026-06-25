@@ -32,7 +32,7 @@
   {% if query %}
   <div class="stack-list">
     {% for product in search_results %}
-    <div class="list-row cost-update-card" style="padding: 1.5rem; background: rgba(240, 162, 58, 0.03); border-color: rgba(240, 162, 58, 0.2);">
+    <div class="list-row cost-update-card" style="padding: 1.5rem; background: var(--accent-soft); border-color: var(--accent);">
       <div style="flex: 1;">
         <strong style="font-size: 1.1rem; color: var(--text);">{{ product.sku }} - {{ product.name }}</strong>
         <p style="margin: 0.5rem 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
@@ -62,7 +62,7 @@
           </div>
           
           <div style="width: 100%;">
-            <button type="submit" class="ghost-button" style="padding: 10px 16px; margin: 0; height: 44px; color: var(--accent-strong); border-color: rgba(240, 162, 58, 0.4); background: rgba(240, 162, 58, 0.08); width: 100%;">Update</button>
+            <button type="submit" class="ghost-button" style="padding: 10px 16px; margin: 0; height: 44px; width: 100%;">Update</button>
           </div>
         </form>
       </div>
@@ -78,13 +78,13 @@
   <section class="panel-card">
     <div class="section-head">
       <div>
-        <p class="eyebrow" style="color: #dc3545;">Alerts</p>
+        <p class="eyebrow" style="color: var(--status-danger);">Alerts</p>
         <h2>Requires Attention</h2>
       </div>
     </div>
     <div class="stack-list">
       {% for product in attention_products %}
-      <div class="list-row" style="border-left: 3px solid #dc3545;">
+      <div class="list-row" style="border-left: 3px solid var(--status-danger);">
         <div>
           <strong>{{ product.sku }} - {{ product.name }}</strong>
           <span style="display: block; color: var(--text-secondary); font-size: 0.85rem;">Missing cost/price data</span>
@@ -120,7 +120,7 @@
           </span>
           <span style="display: block; font-size: 0.8rem; color: var(--muted); margin-top: 2px;">{{ item.created_at|date:"M d, Y H:i" }}</span>
         </div>
-        <div class="list-meta" style="text-align: right; background: rgba(23, 46, 78, 0.03); padding: 8px 12px; border-radius: 8px;">
+        <div class="list-meta" style="text-align: right; background: var(--surface-strong); padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--line);">
           <span style="text-decoration: line-through; color: var(--muted); font-size: 0.85rem; display: block;">{{ item.old_value }}</span>
           <strong style="color: var(--accent-strong); display: block;">{{ item.new_value }}</strong>
         </div>

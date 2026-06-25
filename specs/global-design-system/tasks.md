@@ -1,0 +1,14 @@
+- [ ] Update `templates/base.html` shell layout:
+  - Load Google Font Plus Jakarta Sans
+  - Remove background ambient glow elements
+- [ ] Refactor `core/static/core/styles.css`:
+  - Declare strict orange/white variables in `:root`
+  - Remove page background gradients and grid patterns
+  - Skin sidebar navigation active states and buttons
+  - Restyle panels, metrics, tables, and inputs to be white with soft shadows and borders
+- [ ] Clean up inline styling overrides:
+  - Update `templates/dashboard.html` to remove colored inputs, tables, and borders
+  - Update `templates/sales_dashboard.html` to align lookups and log lists
+- [ ] Verification:
+  - Run Django tests to verify layout accesses
+  - Verify layout looks premium, clean, and consistent in the browser

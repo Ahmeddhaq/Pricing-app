@@ -7,7 +7,7 @@
   <title>Lubricant Pricing Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'core/styles.css' %}">
 </head>
 <body>
@@ -53,8 +53,6 @@
       </div>
     </aside>
     <main class="main-panel">
-      <div class="ambient ambient-a"></div>
-      <div class="ambient ambient-b"></div>
       
       <header class="app-header">
         <button id="sidebar-toggle" class="sidebar-toggle-btn" aria-label="Open menu">
@@ -197,6 +195,15 @@
             if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
             if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
             overlay.addEventListener('click', closeSidebar);
+
+            // Sidebar active link highlighting
+            const currentPath = window.location.pathname;
+            document.querySelectorAll('.sidebar-nav .nav-link').forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPath || (linkHref !== '/' && currentPath.startsWith(linkHref))) {
+                    link.classList.add('active');
+                }
+            });
 
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', closeSidebar);
