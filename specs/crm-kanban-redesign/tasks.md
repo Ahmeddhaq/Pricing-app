@@ -1,0 +1,21 @@
+- [ ] Update `core/views.py`:
+  - Enhance `crm_lead_update` to return JSON responses for AJAX/fetch requests
+- [ ] Redesign page layout and styling in `templates/crm_dashboard.html`:
+  - Add scoped CSS in `<style>` block to replace inline styles
+  - Create metrics header containing KPIs (Total Pipeline, Won Revenue, Active Deals, Conversion Rate)
+  - Add revenue totals and count badges to column headers
+  - Implement dynamic empty states for columns with zero cards
+  - Polish modals (Add/Edit) and fix kebab action menu clipping using absolute positioning
+- [ ] Implement AJAX Drag-and-Drop system in `templates/crm_dashboard.html`:
+  - Dim cards on drag and highlight drop targets on hover
+  - Post stage changes in background using `fetch()` and CSRF validation
+  - Optimistically move card and recalculate column/dashboard aggregates instantly
+  - Add network failure rollback and custom toast error notifications
+- [ ] Add client-side Live Search in `templates/crm_dashboard.html`:
+  - Add search input to headers
+  - Filter cards on input using fuzzy keyword matches
+- [ ] Implement mobile-friendly navigation in `templates/crm_dashboard.html`:
+  - Add a click-to-move stage menu to the actions dropdown
+- [ ] Verification:
+  - Run Django tests to verify no backend regressions
+  - Perform manual verification of drag and drop, search, and responsive layout

@@ -878,6 +878,8 @@ def crm_lead_create(request):
 @login_required
 def crm_lead_update(request, pk):
     if not is_sales(request.user):
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'status': 'error', 'message': 'Permission denied'}, status=403)
         return redirect('dashboard')
     lead = get_object_or_404(Lead, pk=pk)
     if request.method == 'POST':
@@ -885,6 +887,15 @@ def crm_lead_update(request, pk):
         if new_stage in dict(Lead.STAGE_CHOICES):
             lead.stage = new_stage
             lead.save()
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse({
+                    'status': 'ok',
+                    'id': lead.pk,
+                    'stage': lead.stage,
+                    'revenue': str(lead.revenue)
+                })
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({'status': 'error', 'message': 'Invalid stage or request'}, status=400)
     return redirect('crm_dashboard')
 
 
